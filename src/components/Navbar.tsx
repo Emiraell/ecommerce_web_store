@@ -25,10 +25,15 @@ export default function Navbar() {
     <>
       <Header />
       <div className="bg-red-800 w-full fixed top-16 flex justify-between p-5 text-gray-200 ">
-        <p className=" font-rochester hidden md:block">emirael shop</p>
+        <p className=" font-rochester hidden md:block text-3xl text-green-400">
+          emirael shop
+        </p>
 
         <div>
-          <p className={`md:hidden`} onClick={() => setMenuOpened(!menuOpened)}>
+          <p
+            className={`md:hidden text-2xl`}
+            onClick={() => setMenuOpened(!menuOpened)}
+          >
             {!menuOpened ? (
               <FontAwesomeIcon icon={faBars} />
             ) : (
@@ -38,25 +43,31 @@ export default function Navbar() {
 
           <div
             className={` ${
-              !menuOpened ? "hidden" : "block"
-            } md:flex justify-between items-center md:w-[25vw]`}
+              !menuOpened ? "hidden" : "block my-8"
+            } md:flex justify-between items-center md:w-[25vw] text-lg tracking-wide`}
           >
             {navbarPages.map((page) => (
-              <ol key={page.name}>
+              <ol key={page.name} className={`${menuOpened && "my-5"}`}>
                 <Link to={`${page.path}`}>{page.name}</Link>
               </ol>
             ))}
           </div>
         </div>
 
-        <p className=" font-rochester md:hidden">emirael shop</p>
-        <div className=" flex">
+        <p
+          className={`font-rochester text-green-400 ${
+            menuOpened && "hidden"
+          } md:hidden text-3xl`}
+        >
+          emirael shop
+        </p>
+        <div className=" flex text-xl">
           <div>
-            <span>userName</span>
+            <span>user</span>
             <FontAwesomeIcon icon={faUser} className="px-1" />
           </div>
-          <div className="mx-5">
-            <span>cart</span>
+          <div className="md:mx-5 mx-2">
+            <span className=" hidden md:inline">cart</span>
             <FontAwesomeIcon icon={faCartShopping} className="px-1" />
           </div>
         </div>
