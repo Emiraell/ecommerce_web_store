@@ -14,7 +14,7 @@ export default function Navbar() {
       className={` flex justify-between px-5 md:px-7 py-5 text-lg md:text-2xl`}
     >
       <div className=" md:hidden" onClick={() => setMenuOpened(!menuOpened)}>
-        {menuOpened ? (
+        {!menuOpened ? (
           <FontAwesomeIcon icon={faBars} />
         ) : (
           <FontAwesomeIcon icon={faX} />
@@ -24,7 +24,7 @@ export default function Navbar() {
       <div className="md:static absolute mt-16 md:mt-0 right-7 ">
         <ul
           className={` ${
-            menuOpened ? "hidden" : "flex-col"
+            !menuOpened ? "hidden" : "flex-col"
           } flex md:flex-row md:items-center gap-6`}
         >
           <li>Home</li>

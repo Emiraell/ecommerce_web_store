@@ -1,0 +1,10 @@
+/* importing background images */
+.imageOne {
+  background-image: url(../../assets/carouselImages/men.png);
+}
+.imageTwo {
+  background-image: url(../../assets/carouselImages/laptop.png);
+}
+.imageThree {
+  background-image: url(../../assets/carouselImages/electronics.png);
+}
