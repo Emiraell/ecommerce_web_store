@@ -1,7 +1,6 @@
 import cloth from "../assets/carouselImages/men.png";
 import electronics from "../assets/carouselImages/electronics.png";
 import laptop from "../assets/carouselImages/laptop.png";
-import Slider from "react-slick";
 
 export default function Carousel() {
   let settings = {
@@ -25,9 +24,5 @@ export default function Carousel() {
       description: "",
     },
   ];
-  return (
-    <div>
-      <Slider></Slider>
-    </div>
-  );
+  return <div></div>;
 }

@@ -1,77 +1,48 @@
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
-  faCartShopping,
+  faShoppingCart,
   faUser,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
-import Header from "./Header";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
-interface pages {
-  name: string;
-  path: string;
-}
 export default function Navbar() {
-  const navbarPages: pages[] = [
-    { name: "Home", path: "/" },
-    { name: "Shop", path: "/shop" },
-    { name: "Contact", path: "/contact" },
-  ];
-
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
   return (
-    <>
-      <Header />
-      <div className="bg-red-800 w-full fixed top-16 flex justify-between p-5 text-gray-200 ">
-        <p className=" font-rochester hidden md:block text-3xl text-green-400">
-          emirael shop
-        </p>
-
-        <div>
-          <p
-            className={`md:hidden text-2xl`}
-            onClick={() => setMenuOpened(!menuOpened)}
-          >
-            {!menuOpened ? (
-              <FontAwesomeIcon icon={faBars} />
-            ) : (
-              <FontAwesomeIcon icon={faX} />
-            )}
-          </p>
-
-          <div
-            className={` ${
-              !menuOpened ? "hidden" : "block my-8"
-            } md:flex justify-between items-center md:w-[25vw] text-lg tracking-wide`}
-          >
-            {navbarPages.map((page) => (
-              <ol key={page.name} className={`${menuOpened && "my-5"}`}>
-                <Link to={`${page.path}`}>{page.name}</Link>
-              </ol>
-            ))}
-          </div>
-        </div>
-
-        <p
-          className={`font-rochester text-green-400 ${
-            menuOpened && "hidden"
-          } md:hidden text-3xl`}
+    <nav
+      className={` flex justify-between px-5 md:px-7 py-5 text-lg md:text-2xl`}
+    >
+      <div className=" md:hidden" onClick={() => setMenuOpened(!menuOpened)}>
+        {menuOpened ? (
+          <FontAwesomeIcon icon={faBars} />
+        ) : (
+          <FontAwesomeIcon icon={faX} />
+        )}
+      </div>
+      <p>emirael store</p>
+      <div className="md:static absolute mt-16 md:mt-0 right-7 ">
+        <ul
+          className={` ${
+            menuOpened ? "hidden" : "flex-col"
+          } flex md:flex-row md:items-center gap-6`}
         >
-          emirael shop
+          <li>Home</li>
+          <li>Shop all</li>
+          <li>About</li>
+        </ul>
+      </div>
+      <div className=" flex gap-4 items-center ">
+        <p>
+          user <FontAwesomeIcon icon={faUser} />
         </p>
-        <div className=" flex text-xl">
-          <div>
-            <span>user</span>
-            <FontAwesomeIcon icon={faUser} className="px-1" />
-          </div>
-          <div className="md:mx-5 mx-2">
-            <span className=" hidden md:inline">cart</span>
-            <FontAwesomeIcon icon={faCartShopping} className="px-1" />
-          </div>
+        <div>
+          <FontAwesomeIcon icon={faShoppingCart} />
+          <p className=" absolute top-[65px] right-3 text-red-500 text-2xl">
+            0
+          </p>
         </div>
       </div>
-    </>
+    </nav>
   );
 }
