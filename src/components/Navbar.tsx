@@ -11,7 +11,7 @@ export default function Navbar() {
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
   return (
     <nav
-      className={` flex justify-between px-5 md:px-7 py-5 text-lg md:text-2xl`}
+      className={` flex justify-between px-5 md:px-7 py-5 text-lg md:text-2xl md:items-center bg-[#2d3900] text-slate-100`}
     >
       <div className=" md:hidden" onClick={() => setMenuOpened(!menuOpened)}>
         {!menuOpened ? (
@@ -21,11 +21,11 @@ export default function Navbar() {
         )}
       </div>
       <p>emirael store</p>
-      <div className="md:static absolute mt-16 md:mt-0 right-7 ">
+      <div className="md:static absolute mt-11  md:mt-0 left-0 right-0 bg-[#2d3900] px-7 md:px-0 ">
         <ul
           className={` ${
-            !menuOpened ? "hidden" : "flex-col"
-          } flex md:flex-row md:items-center gap-6`}
+            !menuOpened && "hidden md:flex"
+          } flex md:flex-row md:items-center flex-col gap-6 w-[100vw] md:w-fit py-5`}
         >
           <li>Home</li>
           <li>Shop all</li>
