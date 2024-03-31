@@ -6,11 +6,8 @@ export const productSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(getProducts.fulfilled, (state, action) => {
-      action.payload.products.map((product: any) => {
-        if (product.catergory === "smartphones") {
-          state.name.push(product);
-        }
-      });
+      // if (action.payload.map())
+      state.name = action.payload.products as any;
     });
   },
 });
@@ -19,6 +16,7 @@ export const getProducts = createAsyncThunk("get/products", async () => {
   // const res = fetch("https://dummyjson.com/products");
   const res = await fetch("https://dummyjson.com/products");
   const data = await res.json();
+  console.log(data);
   return data;
 });
 export default productSlice.reducer;
