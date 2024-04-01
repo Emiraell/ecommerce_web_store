@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import { useAppDispatch } from "./store/Store";
 import { useEffect } from "react";
 import { getProducts } from "./store/features/products";
+import SingleProduct from "./pages/SingleProduct";
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/product/:id" element={<SingleProduct />} />
         </Routes>
       </Router>
     </div>
