@@ -1,9 +1,11 @@
-import { useAppSelector } from "../store/Store";
+import { removeItem } from "../store/features/Cart";
+import { useAppDispatch, useAppSelector } from "../store/Store";
 
 export default function Cart() {
   const cartProducts = useAppSelector(
     (state) => state.persistedReducer.cartReducer
   );
+  const dispatch = useAppDispatch();
   return (
     <div className="pt-48 md:w-[70%] lg:w-[80%] m-auto w-[90%]">
       <p>Shopping Bag</p>
@@ -25,7 +27,10 @@ export default function Cart() {
               <p>Quantity: 1</p>
               <p>Single Item Price: ${product.price}</p>
               <p>Total Item price: ${product.price * 2}</p>
-              <button className="w-full bg-red-500 rounded-full py-2">
+              <button
+                className="w-full bg-red-500 rounded-full py-2"
+                onClick={() => dispatch(removeItem(product.id))}
+              >
                 Remove item
               </button>
             </div>
