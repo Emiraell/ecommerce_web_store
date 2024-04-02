@@ -1,8 +1,11 @@
 import { faMinus, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../store/Store";
+import { addToCart } from "../../store/features/Cart";
 
 export default function Product({ product }: any) {
+  const dispatch = useAppDispatch();
   return (
     <div>
       <div key={product.id} className=" shadow-lg">
@@ -62,7 +65,10 @@ export default function Product({ product }: any) {
             </p>
           </div>
         </div>
-        <button className=" w-full my-5 bg-yellow-500 p-3 rounded-full ">
+        <button
+          className=" w-full my-5 bg-yellow-500 p-3 rounded-full "
+          onClick={() => dispatch(addToCart(product))}
+        >
           Add to Cart
         </button>
       </div>

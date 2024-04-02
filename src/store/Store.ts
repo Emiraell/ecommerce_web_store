@@ -3,6 +3,7 @@ import { productSlice } from "./features/products";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { cartSlice } from "./features/Cart";
 
 // using redux persist tpprevent data loss on refresh
 
@@ -14,6 +15,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
   productReducer: productSlice.reducer,
+  cartReducer: cartSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

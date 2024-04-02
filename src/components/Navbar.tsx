@@ -7,9 +7,13 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../store/Store";
 
 export default function Navbar() {
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
+  const totalCart: number = useAppSelector(
+    (state) => state.persistedReducer.cartReducer.length
+  );
   return (
     <nav
       className={` flex justify-between px-5 md:px-7 py-5 text-lg md:text-2xl md:items-center bg-[#2d3900] text-slate-100`}
@@ -43,11 +47,14 @@ export default function Navbar() {
         <p>
           user <FontAwesomeIcon icon={faUser} />
         </p>
-        <div>
-          <FontAwesomeIcon icon={faShoppingCart} />
-          <p className=" absolute top-[65px] right-3 text-red-500 text-2xl">
-            0
-          </p>
+        <div className=" w-fit">
+          {" "}
+          <Link to="/cart">
+            <FontAwesomeIcon icon={faShoppingCart} />
+            <p className=" absolute top-[65px] right-3 text-red-500 text-2xl">
+              {totalCart}
+            </p>
+          </Link>
         </div>
       </div>
     </nav>
