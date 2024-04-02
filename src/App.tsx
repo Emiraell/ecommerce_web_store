@@ -6,6 +6,7 @@ import { useAppDispatch } from "./store/Store";
 import { useEffect } from "react";
 import { getProducts } from "./store/features/products";
 import SingleProduct from "./pages/SingleProduct";
+import ShopAll from "./pages/shopAll/ShopAll";
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<SingleProduct />} />
+          <Route path="/shop_all" element={<ShopAll />} />
         </Routes>
       </Router>
     </div>

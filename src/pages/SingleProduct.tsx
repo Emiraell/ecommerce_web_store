@@ -31,7 +31,7 @@ export default function SingleProduct() {
             {product?.title} - <span>{product?.brand}</span>
           </p>
           <p className="text-lg py-5  tracking-wide px-2">
-            {product.description}
+            {product?.description}
           </p>
           <div className=" text-gray-600">
             <p>Availability: In stock</p>

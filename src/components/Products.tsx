@@ -8,9 +8,6 @@ export default function Products() {
     (state) => state.persistedReducer.productReducer.name
   );
 
-  //   const getRating = (rating:number)=> {
-  //     rating <  2 &&
-  //   }
   return (
     <div className="mx-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
       {products?.slice(0, 10).map((product, index) => (
@@ -25,7 +22,7 @@ export default function Products() {
               src={product.thumbnail}
               alt=""
               className=" rounded-lg border-b-4 border-blue-200 h-64 object-cover w-full"
-            />{" "}
+            />
             <p className=" absolute top-14 right-3 text-red-700 text-3xl font-bold uppercase -rotate-45">
               Sale%
             </p>

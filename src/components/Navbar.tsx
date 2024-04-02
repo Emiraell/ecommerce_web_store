@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
@@ -27,9 +28,15 @@ export default function Navbar() {
             !menuOpened && "hidden md:flex"
           } flex md:flex-row md:items-center flex-col gap-6 w-[100vw] md:w-fit py-5`}
         >
-          <li>Home</li>
-          <li>Shop all</li>
-          <li>About</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/shop_all">Shop all</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
         </ul>
       </div>
       <div className=" flex gap-4 items-center ">
