@@ -47,7 +47,7 @@ export default function SingleProduct() {
             <span className="text-bold text-xl ">Quantity:</span>
             <p className="border py-3 w-fit border-gray-700 rounded-full px-4 my-2 -ml-2">
               <FontAwesomeIcon icon={faMinus} />{" "}
-              <span className="mx-9 ">1</span>
+              <span className="mx-9 ">{product?.quantity}</span>
               <FontAwesomeIcon icon={faPlus} />
             </p>
             <span>Subtotal: ${product?.price}</span>
