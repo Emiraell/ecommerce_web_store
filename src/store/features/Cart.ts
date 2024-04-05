@@ -28,6 +28,7 @@ export const cartSlice = createSlice({
           brand: product.brand,
         });
       }
+      state.total++;
     },
     removeItem: (state, action): any => {
       let product = action.payload;
@@ -38,6 +39,7 @@ export const cartSlice = createSlice({
       } else {
         state.cart = state.cart.filter((item) => item.id !== product.id);
       }
+      state.total--;
       // state.cart = state.cart.filter(
       //   (product) => product.id !== action.payload
       // );
