@@ -5,14 +5,18 @@ import {
   faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../store/Store";
 import {} from "@material-tailwind/react";
 
 export default function Navbar() {
+  // open menu bar on small screen devices
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
+
+  // total number of items in the cart
   const totalCart = useAppSelector((state) => state.cartReducer.totalItem);
+
   return (
     <nav
       className={` flex justify-between px-5 md:px-7 py-5 text-lg md:text-2xl md:items-center bg-[#2d3900] text-slate-100`}
@@ -47,7 +51,6 @@ export default function Navbar() {
           user <FontAwesomeIcon icon={faUser} />
         </p>
         <div className=" w-fit">
-          {" "}
           <Link to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
             <p className=" absolute top-[65px] right-3 text-red-500 text-2xl">

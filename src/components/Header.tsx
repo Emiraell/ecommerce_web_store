@@ -30,6 +30,7 @@ export default function Header() {
         </div>
       </div>
 
+      {/* add navbar */}
       <Navbar />
     </div>
   );

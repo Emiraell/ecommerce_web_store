@@ -7,8 +7,21 @@ interface data {
   image: string;
   description: string;
 }
+type settings = {
+  dots: boolean;
+  infinite: boolean;
+  speed: number;
+  slidesToShow: number;
+  slidesToScroll: number;
+  autoplay: boolean;
+  autoplaySpeed: number;
+  pauseOnHover: boolean;
+  cssEase: string;
+};
+
 export default function Carousel() {
-  let settings = {
+  // carousel settings
+  let settings: settings = {
     dots: true,
     infinite: true,
     speed: 800,
@@ -19,6 +32,8 @@ export default function Carousel() {
     pauseOnHover: true,
     cssEase: "linear",
   };
+
+  // carousel data for slider
   const datas: data[] = [
     {
       image: styles.imageOne,

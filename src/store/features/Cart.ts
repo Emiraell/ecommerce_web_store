@@ -20,8 +20,26 @@ interface cartInfo {
   totalItem: number;
 }
 
+// get product from local storage
+const allCartItems = localStorage.getItem("cart");
+localStorage.getItem("totalItem");
+
+// check if items exist in local storage
+let cartItem;
+let totalCartItem;
+try {
+  cartItem = allCartItems && JSON.parse(allCartItems);
+  totalCartItem = totalCartItem && JSON.parse(totalCartItem);
+} catch (err) {
+  cartItem = [];
+  totalCartItem = 0;
+}
+
 // initialState
-const initialState: cartInfo = { cart: [], totalItem: 0 };
+const initialState: cartInfo = {
+  cart: (cartItem as cartProduct[]) || [],
+  totalItem: totalCartItem || 0,
+};
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -50,8 +68,14 @@ export const cartSlice = createSlice({
           brand: product.brand,
         });
       }
+      // save cart products in local storage
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+
       // increment the total number of item in the cart
       state.totalItem++;
+
+      // save total item in local storage
+      localStorage.setItem("totalItem", JSON.stringify(state.totalItem));
     },
     removeItem: (state, action): any => {
       let product = action.payload;
@@ -70,7 +94,15 @@ export const cartSlice = createSlice({
         // remove item if item is equal to 1
         state.cart = state.cart.filter((item) => item.id !== product.id);
       }
+
+      // save cart products in local storage
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+
+      // decrement the total number of item in the cart
       state.totalItem--;
+
+      // save total item in local storage
+      localStorage.setItem("totalItem", JSON.stringify(state.totalItem));
     },
   },
 });

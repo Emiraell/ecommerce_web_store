@@ -18,12 +18,25 @@ export type product = {
 
 // initailState type/interface
 export interface products {
-  products: product[];
+  products: product[] | null;
   status: string;
 }
 
+// get products using local storage
+const allProducts = localStorage.getItem("products");
+
+let items;
+try {
+  items = allProducts && (JSON.parse(allProducts) as product[]);
+} catch (err) {
+  items = [] as product[];
+}
+
 // initialState
-const initialState: products = { products: [], status: "" };
+const initialState = {
+  products: (items as product[]) || [],
+  status: "" as string,
+};
 export const productSlice = createSlice({
   name: "products",
   initialState,
@@ -36,6 +49,9 @@ export const productSlice = createSlice({
           // set product if request is successful
           state.products = action.payload;
           state.status = "success";
+
+          // store item in localStorage
+          localStorage.setItem("products", JSON.stringify(state.products));
         }
       )
       .addCase(getProducts.pending, (state) => {
