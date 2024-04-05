@@ -10,9 +10,7 @@ import ShopAll from "./pages/shopAll/ShopAll";
 import Cart from "./pages/Cart";
 
 function App() {
-  const product = useAppSelector(
-    (state) => state.persistedReducer.productReducer.name
-  );
+  const product = useAppSelector((state) => state.productReducer.name);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getProducts());

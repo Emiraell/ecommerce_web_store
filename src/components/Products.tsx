@@ -4,9 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 export default function Products() {
-  const products: any[] = useAppSelector(
-    (state) => state.persistedReducer.productReducer.name
-  );
+  const products: any[] = useAppSelector((state) => state.productReducer.name);
 
   return (
     <div className="mx-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-12">

@@ -7,20 +7,24 @@ import { cartSlice } from "./features/Cart";
 
 // using redux persist tpprevent data loss on refresh
 
-const persistConfig = {
-  key: "root",
-  version: 1,
-  storage,
-};
+// const persistConfig = {
+//   key: "root",
+//   version: 1,
+//   storage,
+// };
 
-const reducer = combineReducers({
-  productReducer: productSlice.reducer,
-  cartReducer: cartSlice.reducer,
-});
+// const reducer = combineReducers({
+//   productReducer: productSlice.reducer,
+//   cartReducer: cartSlice.reducer,
+// });
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+// const persistedReducer = persistReducer(persistConfig, reducer);
 export const store = configureStore({
-  reducer: { persistedReducer },
+  reducer: {
+    // persistedReducer
+    productReducer: productSlice.reducer,
+    cartReducer: cartSlice.reducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
 });

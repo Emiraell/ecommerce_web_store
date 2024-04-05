@@ -5,9 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function SingleProduct() {
-  const products: any[] = useAppSelector(
-    (state) => state.persistedReducer.productReducer.name
-  );
+  const products: any[] = useAppSelector((state) => state.productReducer.name);
   const [product, setProduct] = useState<any | null>(null);
 
   useEffect(() => {
