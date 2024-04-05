@@ -10,7 +10,10 @@ import ShopAll from "./pages/shopAll/ShopAll";
 import Cart from "./pages/Cart";
 
 function App() {
+  // dispatch action
   const dispatch = useAppDispatch();
+
+  // get products on page load
   useEffect(() => {
     dispatch(getProducts());
   }, []);

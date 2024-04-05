@@ -5,6 +5,7 @@ import Products from "../components/Products";
 export default function Home() {
   return (
     <div className="pt-32 md:pt-44">
+      {/* add component for the home page */}
       <Carousel />
       <NavButtons />
       <Products />

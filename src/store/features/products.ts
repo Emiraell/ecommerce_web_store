@@ -17,7 +17,7 @@ export type product = {
 };
 
 // initailState type/interface
-interface products {
+export interface products {
   products: product[];
   status: string;
 }

@@ -3,12 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../store/Store";
 import { addToCart } from "../../store/features/Cart";
+import { product } from "../../store/features/products";
 
-export default function Product({ product }: any) {
+// received props interface
+interface Iproduct {
+  product: product;
+}
+
+export default function Product({ product }: Iproduct) {
+  // dispatch function
   const dispatch = useAppDispatch();
   return (
-    <div>
-      <div key={product.id} className=" shadow-lg">
+    <div key={product.id}>
+      <div className=" shadow-lg">
         <Link to={`/product/${product.id}`}>
           <div className="relative">
             <img
@@ -35,6 +42,7 @@ export default function Product({ product }: any) {
             ${product.price}
           </p>{" "}
           <div className=" text-orange-400">
+            {/* product rating */}
             <p>{product.rating < 2 && <FontAwesomeIcon icon={faStar} />}</p>
             <p>
               {product.rating < 3 && (
@@ -67,6 +75,7 @@ export default function Product({ product }: any) {
         </div>
         <button
           className=" w-full my-5 bg-yellow-500 p-3 rounded-full "
+          // add product to cart
           onClick={() => dispatch(addToCart(product))}
         >
           Add to Cart
