@@ -22,14 +22,14 @@ interface cartInfo {
 
 // get product from local storage
 const allCartItems = localStorage.getItem("cart");
-localStorage.getItem("totalItem");
+const itemsTotal = localStorage.getItem("totalItem");
 
 // check if items exist in local storage
 let cartItem;
 let totalCartItem;
 try {
   cartItem = allCartItems && JSON.parse(allCartItems);
-  totalCartItem = totalCartItem && JSON.parse(totalCartItem);
+  totalCartItem = itemsTotal && JSON.parse(itemsTotal);
 } catch (err) {
   cartItem = [];
   totalCartItem = 0;
@@ -38,7 +38,7 @@ try {
 // initialState
 const initialState: cartInfo = {
   cart: (cartItem as cartProduct[]) || [],
-  totalItem: totalCartItem || 0,
+  totalItem: (totalCartItem as number) || 0,
 };
 export const cartSlice = createSlice({
   name: "cart",

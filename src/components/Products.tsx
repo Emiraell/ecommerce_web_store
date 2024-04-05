@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/Store";
+import { useAppSelector } from "../store/Store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
-import { getProducts, product } from "../store/features/products";
+import { product } from "../store/features/products";
 
 export default function Products() {
   // all products
@@ -11,10 +10,6 @@ export default function Products() {
     (state) => state.productReducer.products
   );
 
-  // const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   dispatch(getProducts());
-  // }, []);
   return (
     <div className="mx-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
       {products?.slice(0, 10).map((product, index) => (

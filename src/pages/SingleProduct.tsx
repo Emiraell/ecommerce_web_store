@@ -9,6 +9,7 @@ import { addToCart } from "../store/features/Cart";
 export default function SingleProduct() {
   // get id from the url when page loads
   const { id } = useParams();
+
   // get products from the store
   const products: product[] = useAppSelector(
     (state) => state.productReducer.products
@@ -70,7 +71,7 @@ export default function SingleProduct() {
           </div>
 
           <button
-            onClick={() => dispatch(addToCart(product))}
+            onClick={() => product && dispatch(addToCart(product))}
             className="my-5 bg-emerald-800 w-full py-3 rounded-full text-gray-100
 					hover:text-emerald-800 hover:bg-transparent hover:border-2 border-emerald-800"
           >
