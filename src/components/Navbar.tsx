@@ -12,7 +12,7 @@ import {} from "@material-tailwind/react";
 
 export default function Navbar() {
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
-  const totalCart = useAppSelector((state) => state.cartReducer.total);
+  const totalCart = useAppSelector((state) => state.cartReducer.totalItem);
   return (
     <nav
       className={` flex justify-between px-5 md:px-7 py-5 text-lg md:text-2xl md:items-center bg-[#2d3900] text-slate-100`}

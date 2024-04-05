@@ -14,7 +14,7 @@ export default function ShopAll() {
   const [groceries, setGroceries] = useState<any[] | null>();
   const [homeDecorations, setHomeDecorations] = useState<any[] | null>();
 
-  const products = useAppSelector((state) => state.productReducer.name);
+  const products = useAppSelector((state) => state.productReducer.products);
   // const dispatch = useAppDispatch();
 
   const assignProducts = () => {

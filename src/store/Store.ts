@@ -1,27 +1,10 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { productSlice } from "./features/products";
-import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { cartSlice } from "./features/Cart";
 
-// using redux persist tpprevent data loss on refresh
-
-// const persistConfig = {
-//   key: "root",
-//   version: 1,
-//   storage,
-// };
-
-// const reducer = combineReducers({
-//   productReducer: productSlice.reducer,
-//   cartReducer: cartSlice.reducer,
-// });
-
-// const persistedReducer = persistReducer(persistConfig, reducer);
 export const store = configureStore({
   reducer: {
-    // persistedReducer
     productReducer: productSlice.reducer,
     cartReducer: cartSlice.reducer,
   },
@@ -29,6 +12,7 @@ export const store = configureStore({
     getDefaultMiddleware({ serializableCheck: false }),
 });
 
+// dispatch and selector
 export const useAppDispatch: () => typeof store.dispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<
   ReturnType<typeof store.getState>
