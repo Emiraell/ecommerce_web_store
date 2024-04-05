@@ -11,7 +11,6 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       let product = action.payload;
-      // state.cart?.map((produc) => {
       let itemExist = state.cart.find((item) => item.id === product.id);
       if (itemExist) {
         itemExist.quantity++;
@@ -29,13 +28,19 @@ export const cartSlice = createSlice({
           brand: product.brand,
         });
       }
-      // });
-      // state.cart.unshift(action.payload);
     },
     removeItem: (state, action): any => {
-      state.cart = state.cart.filter(
-        (product) => product.id !== action.payload
-      );
+      let product = action.payload;
+      let itemExist = state.cart.find((item) => item.id === product.id);
+      if (itemExist.totalPrice !== product.price && itemExist.quantity !== 1) {
+        itemExist.quantity--;
+        itemExist.totalPrice -= product.price;
+      } else {
+        state.cart = state.cart.filter((item) => item.id !== product.id);
+      }
+      // state.cart = state.cart.filter(
+      //   (product) => product.id !== action.payload
+      // );
     },
   },
 });

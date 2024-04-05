@@ -31,7 +31,7 @@ export default function Cart() {
               <p>Total Item price: ${product.totalPrice}</p>
               <button
                 className="w-full bg-red-500 rounded-full py-2"
-                onClick={() => dispatch(removeItem(product.id))}
+                onClick={() => dispatch(removeItem(product))}
               >
                 Remove item
               </button>
