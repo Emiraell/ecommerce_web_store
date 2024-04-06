@@ -10,7 +10,7 @@ type cartProduct = {
   description: string;
   category: string;
   image: string;
-  totalPrice: number;
+  subTotal: number;
   brand: string;
 };
 
@@ -44,6 +44,18 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    // incrementQuanity: (state, action) => {
+    //   const item = state.
+    // },
+    // decrementQuanity: (state, action) => {
+    //   state.cart.map((item) => {
+    //     if (item.id === action.payload.id) {
+    //       item.quantity--;
+    //       item.totalPrice = item.totalPrice - item.price;
+    //       console.log("decre");
+    //     }
+    //   });
+    // },
     // add product/item to cart
     addToCart: (state, action: PayloadAction<product>) => {
       let product = action.payload;
@@ -52,19 +64,19 @@ export const cartSlice = createSlice({
       let itemExist = state.cart.find((item) => item.id === product.id);
       if (itemExist) {
         // increment the quantity and add the price id item exist
-        itemExist.quantity++;
-        itemExist.totalPrice += product.price;
+        itemExist.quantity += action.payload.quantity;
+        itemExist.subTotal += action.payload.subTotal;
       } else {
         // add item at the start of the list if item exist
         state.cart.unshift({
           id: product.id,
           title: product.title,
           price: product.price,
-          quantity: product.quantity,
+          quantity: action.payload.quantity,
           description: product.description,
           category: product.category,
           image: product.images[0],
-          totalPrice: product.price,
+          subTotal: action.payload.subTotal,
           brand: product.brand,
         });
       }
@@ -72,7 +84,7 @@ export const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state.cart));
 
       // increment the total number of item in the cart
-      state.totalItem++;
+      state.totalItem += action.payload.quantity;
 
       // save total item in local storage
       localStorage.setItem("totalItem", JSON.stringify(state.totalItem));
@@ -84,12 +96,12 @@ export const cartSlice = createSlice({
       let itemExist = state.cart.find((item) => item.id === product.id);
       if (
         itemExist &&
-        itemExist.totalPrice !== product.price &&
-        itemExist.quantity !== 1
+        itemExist.subTotal !== product.price &&
+        itemExist.quantity > 1
       ) {
         // decrement the quantity and subtract the price if item exist and its greater than 1
-        itemExist.quantity = itemExist.quantity - 1;
-        itemExist.totalPrice -= product.price;
+        itemExist.quantity--;
+        itemExist.subTotal -= product.price;
       } else {
         // remove item if item is equal to 1
         state.cart = state.cart.filter((item) => item.id !== product.id);
@@ -99,7 +111,7 @@ export const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state.cart));
 
       // decrement the total number of item in the cart
-      state.totalItem--;
+      state.totalItem -= action.payload.quantity;
 
       // save total item in local storage
       localStorage.setItem("totalItem", JSON.stringify(state.totalItem));

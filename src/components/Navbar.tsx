@@ -11,6 +11,7 @@ import { useAppSelector } from "../store/Store";
 import {} from "@material-tailwind/react";
 
 export default function Navbar() {
+  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   // open menu bar on small screen devices
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
 
@@ -50,7 +51,13 @@ export default function Navbar() {
         <p>
           user <FontAwesomeIcon icon={faUser} />
         </p>
-        <div className=" w-fit">
+        <div
+          className=" w-fit"
+          onClick={() => {
+            setIsCartOpen(!isCartOpen);
+            console.log(isCartOpen);
+          }}
+        >
           <Link to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
             <p className=" absolute top-[65px] right-3 text-red-500 text-2xl">

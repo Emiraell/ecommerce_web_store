@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { removeItem } from "../store/features/Cart";
 import { useAppDispatch, useAppSelector } from "../store/Store";
 
@@ -30,7 +29,7 @@ export default function Cart() {
               <p>Item: {product.title}</p>
               <p>Quantity: {product.quantity}</p>
               <p>Single Item Price: ${product.price}</p>
-              <p>Total Item price: ${product.totalPrice}</p>
+              <p>Total Item price: ${product.subTotal}</p>
 
               {/* remove product from cart */}
               <button

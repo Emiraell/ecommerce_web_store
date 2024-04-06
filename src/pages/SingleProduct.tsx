@@ -3,7 +3,11 @@ import { useAppDispatch, useAppSelector } from "../store/Store";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { product } from "../store/features/products";
+import {
+  product,
+  // incrementQuantity,
+  // decrementQuantity,
+} from "../store/features/products";
 import { addToCart } from "../store/features/Cart";
 
 export default function SingleProduct() {
@@ -18,11 +22,18 @@ export default function SingleProduct() {
   // single product
   const [product, setProduct] = useState<product>();
 
+  const [amount, setAmount] = useState<number>(1);
+  const [total, setTotal] = useState<number>(0);
+
   useEffect(() => {
     // set product if the id matches the product id
     products?.map((product: any) => {
-      product.id == id && setProduct(product);
+      if (product.id == id) {
+        setProduct(product);
+        setTotal(product.subTotal);
+      }
     });
+    // amount < 1 && setAmount(1);
   }, []);
 
   // dispatch action
@@ -62,16 +73,35 @@ export default function SingleProduct() {
             <span className="text-bold text-xl ">Quantity:</span>
             {/* product quantity */}
             <p className="border py-3 w-fit border-gray-700 rounded-full px-4 my-2 -ml-2">
-              <FontAwesomeIcon icon={faMinus} />{" "}
-              <span className="mx-9 ">{product?.quantity}</span>
-              <FontAwesomeIcon icon={faPlus} />
+              <FontAwesomeIcon
+                icon={faMinus}
+                onClick={() => {
+                  product &&
+                    (setAmount(amount - 1), setTotal(total - product?.price));
+                }}
+              />
+              <span className="mx-9 ">{amount}</span>
+              <FontAwesomeIcon
+                icon={faPlus}
+                onClick={() => {
+                  product &&
+                    (setAmount(amount + 1), setTotal(total + product?.price));
+                }}
+              />
             </p>
 
-            {/* <span>Subtotal: ${product?.price}</span> */}
+            <span>Subtotal: ${total}</span>
           </div>
 
           <button
-            onClick={() => product && dispatch(addToCart(product))}
+            onClick={() => {
+              product &&
+                dispatch(
+                  addToCart({ ...product, quantity: amount, subTotal: total })
+                );
+              setAmount(1);
+              product && setTotal(product?.price);
+            }}
             className="my-5 bg-emerald-800 w-full py-3 rounded-full text-gray-100
 					hover:text-emerald-800 hover:bg-transparent hover:border-2 border-emerald-800"
           >

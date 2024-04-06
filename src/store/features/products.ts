@@ -14,6 +14,7 @@ export type product = {
   thumbnail: string;
   images: string[];
   quantity: number;
+  subTotal: number;
 };
 
 // initailState type/interface
@@ -40,7 +41,25 @@ const initialState = {
 export const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    // incrementQuantity: (state, action) => {
+    //   state.products.map((item) => {
+    //     if (item.id === action.payload.id && item.quantity !== item.stock) {
+    //       item.quantity++;
+    //       item.subTotal = item.subTotal + item.price;
+    //       console.log("incrm");
+    //     }
+    //   });
+    // },
+    // decrementQuantity: (state, action) => {
+    //   state.products.map((item) => {
+    //     if (item.id === action.payload.id && item.quantity < 1) {
+    //       item.quantity;
+    //       item.subTotal = item.subTotal - item.price;
+    //     }
+    //   });
+    // },
+  },
   extraReducers(builder) {
     builder
       .addCase(
@@ -71,10 +90,12 @@ export const getProducts = createAsyncThunk("get/products", async () => {
   const data = await res.json();
 
   // update the data by adding a quantity
-  let updatedData = data.products.map((Product: any) => ({
-    ...Product,
+  let updatedData = data.products.map((product: product) => ({
+    ...product,
     quantity: 1,
+    subTotal: product.price,
   }));
   return updatedData;
 });
+// export const { incrementQuantity, decrementQuantity } = productSlice.actions;
 export default productSlice.reducer;
