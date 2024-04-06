@@ -44,18 +44,6 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    // incrementQuanity: (state, action) => {
-    //   const item = state.
-    // },
-    // decrementQuanity: (state, action) => {
-    //   state.cart.map((item) => {
-    //     if (item.id === action.payload.id) {
-    //       item.quantity--;
-    //       item.totalPrice = item.totalPrice - item.price;
-    //       console.log("decre");
-    //     }
-    //   });
-    // },
     // add product/item to cart
     addToCart: (state, action: PayloadAction<product>) => {
       let product = action.payload;
@@ -111,7 +99,7 @@ export const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state.cart));
 
       // decrement the total number of item in the cart
-      state.totalItem -= action.payload.quantity;
+      state.totalItem--;
 
       // save total item in local storage
       localStorage.setItem("totalItem", JSON.stringify(state.totalItem));

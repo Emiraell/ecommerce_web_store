@@ -56,7 +56,9 @@ export default function ShopAll() {
         // display items
         <div>
           <div>
-            <p className=" border-b border-green-500 mb-5 ">Phone</p>
+            <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
+              Phones
+            </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {phones?.map((phone) => (
                 <Product product={phone} key={phone.id} />
@@ -65,7 +67,9 @@ export default function ShopAll() {
           </div>
 
           <div className="mt-16">
-            <p className=" border-b border-green-500 mb-5 ">Laptops</p>
+            <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
+              Laptops
+            </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {laptops?.map((laptop) => (
                 <Product product={laptop} key={laptop.id} />
@@ -74,7 +78,9 @@ export default function ShopAll() {
           </div>
 
           <div className="mt-16">
-            <p className=" border-b border-green-500 mb-5 ">Home Decoration</p>
+            <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
+              Home Decoration
+            </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {homeDecorations?.map((decoration) => (
                 <Product product={decoration} key={decoration.id} />
@@ -83,7 +89,9 @@ export default function ShopAll() {
           </div>
 
           <div className="mt-16">
-            <p className=" border-b border-green-500 mb-5 ">Skincare</p>
+            <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
+              Skincare
+            </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {skincares?.map((skincare) => (
                 <Product product={skincare} key={skincare.id} />
@@ -92,7 +100,9 @@ export default function ShopAll() {
           </div>
 
           <div className="mt-16">
-            <p className=" border-b border-green-500 mb-5 ">Fragrances</p>
+            <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
+              Fragrances
+            </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {fragrances?.map((fragrance) => (
                 <Product product={fragrance} key={fragrance.id} />
@@ -101,7 +111,9 @@ export default function ShopAll() {
           </div>
 
           <div className="mt-16">
-            <p className=" border-b border-green-500 mb-5 ">Groceries</p>
+            <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
+              Groceries
+            </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {groceries?.map((grocery) => (
                 <Product product={grocery} key={grocery.id} />

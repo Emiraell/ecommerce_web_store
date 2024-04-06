@@ -26,7 +26,11 @@ export default function NavButtons() {
       </div>
       <div className=" grid gap-3 grid-cols-3 md:grid-cols-6 md:text-lg mt-5">
         {goods.map((good) => (
-          <button className=" bg-slate-300 text-gray-950 p-2 pr-5" key={good}>
+          <button
+            className=" bg-slate-300 text-gray-950 p-2 pr-5"
+            key={good}
+            onClick={() => {}}
+          >
             {good}
           </button>
         ))}

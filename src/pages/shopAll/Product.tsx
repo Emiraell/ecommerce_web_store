@@ -33,11 +33,11 @@ export default function Product({ product }: Iproduct) {
             <span>{product.brand}</span>
           </div>
         </Link>
-        <p className="text-center px-3 md:h-32 text-lg">
+        <p className="text-center px-3 md:h-32 text-lg tracking-wider">
           {product.description}
         </p>
 
-        <div className="flex justify-around">
+        <div className="flex justify-around pt-4">
           <p className=" text-xl font-bold text-emerald-900 ">
             ${product.price}
           </p>{" "}

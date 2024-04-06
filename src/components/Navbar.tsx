@@ -29,7 +29,12 @@ export default function Navbar() {
           <FontAwesomeIcon icon={faX} />
         )}
       </div>
-      <p>emirael store</p>
+      <p>
+        emirael{" "}
+        <span className=" font-rochester text-red-400 text-xl md:text-2xl tracking-wider">
+          Store
+        </span>
+      </p>
       <div className="md:static absolute mt-11  md:mt-0 left-0 right-0 bg-[#2d3900] px-7 md:px-0 ">
         <ul
           className={` ${
@@ -55,13 +60,12 @@ export default function Navbar() {
           className=" w-fit"
           onClick={() => {
             setIsCartOpen(!isCartOpen);
-            console.log(isCartOpen);
           }}
         >
           <Link to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
-            <p className=" absolute top-[65px] right-3 text-red-500 text-2xl">
-              {totalCart}
+            <p className=" absolute top-[65px] md:top-[84px] right-3 md:right-5 text-red-500 text-2xl md:text-3xl">
+              {totalCart !== 0 && totalCart}
             </p>
           </Link>
         </div>
