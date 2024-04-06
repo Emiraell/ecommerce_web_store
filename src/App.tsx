@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { getProducts } from "./store/features/products";
 import SingleProduct from "./pages/SingleProduct";
 import ShopAll from "./pages/shopAll/ShopAll";
+import Cart from "./pages/Cart";
 // import Cart from "./pages/Cart";
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<SingleProduct />} />
           <Route path="/shop_all" element={<ShopAll />} />
-          {/* <Route path="/cart" element={<Cart />} /> */}
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </Router>
     </div>

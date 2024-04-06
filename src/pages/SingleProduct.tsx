@@ -39,14 +39,14 @@ export default function SingleProduct() {
   // dispatch action
   const dispatch = useAppDispatch();
   return (
-    <div className=" h-[100vh] items-center flex w-[90%] m-auto md:pt-40 lg:w-[80%]">
-      <div className=" flex md:flex-row flex-col md:items-center">
-        <div className=" lg:w-2/3 mr-5">
+    <div className=" h-[100vh] items-center flex w-[90%] m-auto pt-40 lg:w-[80%]">
+      <div className=" flex md:flex-row flex-col md:items-center justify-center">
+        <div className=" md:w-1/3 mr-5">
           {/* product image */}
           <img
             src={product?.images[0]}
             alt={`${product?.title} image`}
-            className=" object-cover h-[40vh] md:h-[48vh] lg:h-[60vh] rounded-lg "
+            className=" object-cover rounded-lg "
           />
         </div>
         <div className=" px-3 text-xl">
@@ -55,7 +55,7 @@ export default function SingleProduct() {
             {product?.title} - <span>{product?.brand}</span>
           </p>
           {/* product description */}
-          <p className="text-lg py-5  tracking-wide px-2">
+          <p className="text-lg py-5 md:text-xl tracking-wider px-2">
             {product?.description}
           </p>
           {/* more product info */}

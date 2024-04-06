@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { product } from "./products";
 
 // cart prouct type
-type cartProduct = {
+export type cartProduct = {
   id: number;
   title: string;
   price: number;
@@ -18,18 +18,22 @@ type cartProduct = {
 interface cartInfo {
   cart: cartProduct[];
   totalItem: number;
+  totalPrice: number;
 }
 
 // get product from local storage
 const allCartItems = localStorage.getItem("cart");
 const itemsTotal = localStorage.getItem("totalItem");
+const itemsTotalPrice = localStorage.getItem("totalPrice");
 
 // check if items exist in local storage
 let cartItem;
 let totalCartItem;
+let totalCartPrice;
 try {
   cartItem = allCartItems && JSON.parse(allCartItems);
   totalCartItem = itemsTotal && JSON.parse(itemsTotal);
+  totalCartPrice = itemsTotalPrice && JSON.parse(itemsTotalPrice);
 } catch (err) {
   cartItem = [];
   totalCartItem = 0;
@@ -39,6 +43,7 @@ try {
 const initialState: cartInfo = {
   cart: (cartItem as cartProduct[]) || [],
   totalItem: (totalCartItem as number) || 0,
+  totalPrice: 0,
 };
 export const cartSlice = createSlice({
   name: "cart",
@@ -76,6 +81,10 @@ export const cartSlice = createSlice({
 
       // save total item in local storage
       localStorage.setItem("totalItem", JSON.stringify(state.totalItem));
+
+      // total price
+      state.totalPrice += product.subTotal;
+      localStorage.setItem("totalPrice", JSON.stringify(state.totalPrice));
     },
     removeItem: (state, action): any => {
       let product = action.payload;
@@ -103,6 +112,10 @@ export const cartSlice = createSlice({
 
       // save total item in local storage
       localStorage.setItem("totalItem", JSON.stringify(state.totalItem));
+
+      // total price
+      state.totalPrice -= action.payload.price;
+      localStorage.setItem("totalPrice", JSON.stringify(state.totalPrice));
     },
   },
 });
