@@ -18,6 +18,9 @@ export default function Navbar() {
   // total number of items in the cart
   const totalCart = useAppSelector((state) => state.cartReducer.totalItem);
 
+  // logged in user name
+  const name: string = useAppSelector((state) => state.userReducer.userName);
+
   return (
     <nav
       className={` flex justify-between px-5 md:px-7 py-5 text-lg md:text-2xl md:items-center bg-[#2d3900] text-slate-100`}
@@ -54,7 +57,7 @@ export default function Navbar() {
       </div>
       <div className=" flex gap-4 items-center ">
         <p>
-          user <FontAwesomeIcon icon={faUser} />
+          {name} <FontAwesomeIcon icon={faUser} />
         </p>
         <div
           className=" w-fit"
