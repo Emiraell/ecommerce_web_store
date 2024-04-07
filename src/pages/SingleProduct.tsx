@@ -74,17 +74,21 @@ export default function SingleProduct() {
             {/* product quantity */}
             <p className="border py-3 w-fit border-gray-700 rounded-full px-4 my-2 -ml-2">
               <FontAwesomeIcon
+                className=" cursor-pointer"
                 icon={faMinus}
                 onClick={() => {
                   product &&
+                    amount > 1 &&
                     (setAmount(amount - 1), setTotal(total - product?.price));
                 }}
               />
-              <span className="mx-9 ">{amount}</span>
+              <span className="mx-9">{amount}</span>
               <FontAwesomeIcon
+                className=" cursor-pointer"
                 icon={faPlus}
                 onClick={() => {
                   product &&
+                    amount < product.stock &&
                     (setAmount(amount + 1), setTotal(total + product?.price));
                 }}
               />
@@ -103,7 +107,7 @@ export default function SingleProduct() {
               product && setTotal(product?.price);
             }}
             className="my-5 bg-emerald-800 w-full py-3 rounded-full text-gray-100
-					hover:text-emerald-800 hover:bg-transparent hover:border-2 border-emerald-800"
+					hover:text-emerald-800 hover:bg-transparent hover:border-2 border-emerald-800 cursor-pointer"
           >
             Add to cart
           </button>
