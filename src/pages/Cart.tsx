@@ -23,7 +23,7 @@ export default function Cart() {
     );
   }, []);
   return (
-    <div className="pt-28 md:w-[70%] lg:w-[80%] m-auto w-[90%]">
+    <div className="pt-28 md:pt-36 md:w-[70%] lg:w-[80%] m-auto w-[90%]">
       <Header />
       {/* title and total price*/}{" "}
       <div className="flex justify-between">
@@ -37,37 +37,43 @@ export default function Cart() {
           </p>
         )}
       </div>
-      <div className="lg:grid grid-cols-2 gap-10">
-        {cart?.map((product) => (
-          // single product content
-          <div
-            key={product.id}
-            className=" grid grid-cols-5 shadow-md my-10 py-3 gap-x-10"
-          >
-            <div className=" col-span-2">
-              <img src={product.image} alt={`${product.title} photo`} />
-              <div>
-                <p className="text-center">{product.brand}</p>
-                {/* <p>{product.description}</p> */}
+      {cart.length === 0 ? (
+        <p className="text-center text-gray-500 italic text-lg pt-20">
+          Shopping bag is empty
+        </p>
+      ) : (
+        <div className="lg:grid grid-cols-2 gap-10">
+          {cart?.map((product) => (
+            // single product content
+            <div
+              key={product.id}
+              className=" grid grid-cols-5 shadow-md my-10 py-3 gap-x-10"
+            >
+              <div className=" col-span-2">
+                <img src={product.image} alt={`${product.title} photo`} />
+                <div>
+                  <p className="text-center">{product.brand}</p>
+                  {/* <p>{product.description}</p> */}
+                </div>
+              </div>
+              <div className=" col-span-3 flex flex-col gap-3 justify-center">
+                <p>Item: {product.title}</p>
+                <p>Quantity: {product.quantity}</p>
+                <p>Single Item Price: ${product.price}</p>
+                <p>Total Item price: ${product.subTotal}</p>
+
+                {/* remove product from cart */}
+                <button
+                  className="w-full bg-red-500 rounded-full py-2"
+                  onClick={() => dispatch(removeItem(product))}
+                >
+                  Remove item
+                </button>
               </div>
             </div>
-            <div className=" col-span-3 flex flex-col gap-3 justify-center">
-              <p>Item: {product.title}</p>
-              <p>Quantity: {product.quantity}</p>
-              <p>Single Item Price: ${product.price}</p>
-              <p>Total Item price: ${product.subTotal}</p>
-
-              {/* remove product from cart */}
-              <button
-                className="w-full bg-red-500 rounded-full py-2"
-                onClick={() => dispatch(removeItem(product))}
-              >
-                Remove item
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
       <Footer />
     </div>
   );

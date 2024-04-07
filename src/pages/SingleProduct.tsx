@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/Store";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,6 +24,9 @@ export default function SingleProduct() {
   // single product
   const [product, setProduct] = useState<product>();
 
+  // navigate
+  const navigate = useNavigate();
+
   const [amount, setAmount] = useState<number>(1);
   const [total, setTotal] = useState<number>(0);
 
@@ -43,7 +46,7 @@ export default function SingleProduct() {
   return (
     <div className=" h-[100vh] items-center flex w-[90%] m-auto pt-40 lg:w-[80%]">
       <Header />
-      <div className=" flex md:flex-row flex-col md:items-center justify-center pb-20">
+      <div className=" flex md:flex-row flex-col md:items-center justify-center py-32">
         <div className=" md:w-1/3 mr-5">
           {/* product image */}
           <img
@@ -108,6 +111,9 @@ export default function SingleProduct() {
                 );
               setAmount(1);
               product && setTotal(product?.price);
+              setTimeout(() => {
+                navigate("/cart");
+              }, 1000);
             }}
             className="my-5 bg-emerald-800 w-full py-3 rounded-full text-gray-100
 					hover:text-emerald-800 hover:bg-transparent hover:border-2 border-emerald-800 cursor-pointer"

@@ -71,7 +71,8 @@ export default function Navbar() {
           <div className=" flex gap-4 items-center ">
             {/* logout */}
             <p onClick={() => dispatch(logout())}>
-              {name} <FontAwesomeIcon icon={faUser} />
+              {/* display only the first three letters of user */}
+              {name.substring(0, 3)} <FontAwesomeIcon icon={faUser} />
             </p>
             <div
               className=" w-fit"
@@ -81,7 +82,7 @@ export default function Navbar() {
             >
               <Link to="/cart">
                 <FontAwesomeIcon icon={faShoppingCart} />
-                <p className=" absolute top-[65px] md:top-[84px] right-3 md:right-5 text-red-500 text-2xl md:text-3xl">
+                <p className=" absolute top-0 md:top-4 right-3 md:right-5 text-red-500 text-2xl md:text-3xl">
                   {totalCart !== 0 && totalCart}
                 </p>
               </Link>
