@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Header from "./components/Header";
 import { useAppDispatch, useAppSelector } from "./store/Store";
 import { useEffect } from "react";
 import { getProducts } from "./store/features/products";
@@ -10,7 +9,7 @@ import ShopAll from "./pages/shopAll/ShopAll";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import ToTop from "./components/ToTop";
-// import Cart from "./pages/Cart";
+import About from "./pages/About";
 
 function App() {
   // dispatch action
@@ -28,9 +27,13 @@ function App() {
         {/* <Header /> */}
         <Routes>
           <Route path="/" element={userIn ? <Home /> : <Login />} />
-          <Route path="/product/:id" element={<SingleProduct />} />
-          <Route path="/shop_all" element={<ShopAll />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/product/:id"
+            element={userIn ? <SingleProduct /> : <Login />}
+          />
+          <Route path="/shop_all" element={userIn ? <ShopAll /> : <Login />} />
+          <Route path="/cart" element={userIn ? <Cart /> : <Login />} />
+          <Route path="/about" element={userIn ? <About /> : <Login />} />
         </Routes>
       </Router>
     </div>

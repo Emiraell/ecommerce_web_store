@@ -1,8 +1,3 @@
-import facebook from "../assets/icons/facebook.svg";
-import twitter from "../assets/icons/twitter.svg";
-import linkedIn from "../assets/icons/linkedIn.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./Navbar";
 
 export default function Header() {

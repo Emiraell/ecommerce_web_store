@@ -12,7 +12,7 @@ let userAuth;
 try {
   userAuth = userInfo && JSON.parse(userInfo);
 } catch (err) {}
-const initialState: auth = {
+const initialState: auth = userAuth || {
   userName: "",
   password: "",
   userIn: false,

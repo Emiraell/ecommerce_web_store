@@ -25,7 +25,7 @@ export default function Login() {
     <div className=" m-auto pt-48 md:w-fit tracking-wider md:text-lg w-full">
       <Header />
       <div className="py-10">
-        <p className=" text-green-700 font-rochester text-xl md:text-2xl">
+        <p className=" text-green-700 text-center font-rochester text-xl md:text-2xl">
           Welcome to emirael store
         </p>
       </div>
