@@ -9,6 +9,7 @@ import SingleProduct from "./pages/SingleProduct";
 import ShopAll from "./pages/shopAll/ShopAll";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
+import ToTop from "./components/ToTop";
 // import Cart from "./pages/Cart";
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
   return (
     <div className="font-roboto">
       <Router>
-        <Header />
+        <ToTop />
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={userIn ? <Home /> : <Login />} />
           <Route path="/product/:id" element={<SingleProduct />} />

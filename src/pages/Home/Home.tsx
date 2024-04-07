@@ -2,10 +2,12 @@ import NavButtons from "./NavButtons";
 import Carousel from "../../components/slider/Carousel";
 import Footer from "../../components/Footer";
 import Products from "./Products";
+import Header from "../../components/Header";
 export default function Home() {
   return (
-    <div className="pt-32 md:pt-44">
+    <div className="">
       {/* add component for the home page */}
+      <Header />
       <Carousel />
       <NavButtons />
       <Products />

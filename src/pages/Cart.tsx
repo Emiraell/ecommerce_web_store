@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { cartProduct, removeItem } from "../store/features/Cart";
 import { useAppDispatch, useAppSelector } from "../store/Store";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 interface Icart {
   cart: cartProduct[];
@@ -21,11 +23,20 @@ export default function Cart() {
     );
   }, []);
   return (
-    <div className="pt-48 md:w-[70%] lg:w-[80%] m-auto w-[90%]">
-      {/* title */}
-      <p className=" text-xl text-orange-500 font-semibold pb-8">
-        Shopping Bag
-      </p>
+    <div className="pt-28 md:w-[70%] lg:w-[80%] m-auto w-[90%]">
+      <Header />
+      {/* title and total price*/}{" "}
+      <div className="flex justify-between">
+        <p className=" text-xl text-orange-500 font-semibold pb-8">
+          Shopping Bag
+        </p>{" "}
+        {/* cart total price */}
+        {totalPrice !== 0 && (
+          <p className=" font-bold text-lg">
+            Total: <span className="text-orange-500">${totalPrice}</span>
+          </p>
+        )}
+      </div>
       <div className="lg:grid grid-cols-2 gap-10">
         {cart?.map((product) => (
           // single product content
@@ -57,12 +68,7 @@ export default function Cart() {
           </div>
         ))}
       </div>
-      {/* cart total price */}
-      {totalPrice !== 0 && (
-        <p className=" font-bold text-lg">
-          Total: <span className="text-orange-500">${totalPrice}</span>
-        </p>
-      )}
+      <Footer />
     </div>
   );
 }

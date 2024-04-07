@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Footer() {
   return (
-    <div className=" py-4 text-center bg-green-950 text-gray-100 md:text-lg italic tracking-wide">
+    <div className=" py-4 text-center bg-green-950 text-gray-100 md:text-lg italic tracking-wide fixed bottom-0 right-0 left-0">
       <FontAwesomeIcon icon={faCopyright} className=" text-blue-700" />{" "}
       <span>Emirael store 2024 | All right reserved</span>
     </div>

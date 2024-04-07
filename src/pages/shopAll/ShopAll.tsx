@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../../store/Store";
 import Product from "./Product";
 import { product, products } from "../../store/features/products";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 export default function ShopAll() {
   //  get all products
@@ -21,7 +23,7 @@ export default function ShopAll() {
 
   //  assign products to each category
   const assignProducts = () => {
-    products.map((product: any) => {
+    products?.map((product: any) => {
       product.category === "smartphones" &&
         setPhones((prev) => (prev ? [...prev, product] : [product]));
       product.category === "laptops" &&
@@ -49,13 +51,14 @@ export default function ShopAll() {
 
   return (
     <div className="pt-44 w-[90%] m-auto text-lg  tracking-wider">
+      <Header />
       {/* display message */}
-      {products.length < 1 ? (
+      {products && products.length < 1 ? (
         <p>{message}</p>
       ) : (
         // display items
-        <div>
-          <div>
+        <div className="pb-32">
+          <>
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
               Phones
             </p>
@@ -64,7 +67,7 @@ export default function ShopAll() {
                 <Product product={phone} key={phone.id} />
               ))}
             </div>
-          </div>
+          </>
 
           <div className="mt-16">
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
@@ -122,6 +125,7 @@ export default function ShopAll() {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

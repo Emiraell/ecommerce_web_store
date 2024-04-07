@@ -3,6 +3,8 @@ import { auth, login } from "../store/features/auth";
 import { useAppDispatch } from "../store/Store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 export default function Login() {
   // user details
@@ -21,6 +23,7 @@ export default function Login() {
   const dispatch = useAppDispatch();
   return (
     <div className=" m-auto pt-48 md:w-fit tracking-wider md:text-lg w-full">
+      <Header />
       <div className="py-10">
         <p className=" text-green-700 font-rochester text-xl md:text-2xl">
           Welcome to emirael store
@@ -100,6 +103,7 @@ export default function Login() {
           submit
         </button>
       </form>
+      <Footer />
     </div>
   );
 }

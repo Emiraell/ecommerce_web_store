@@ -9,13 +9,15 @@ import {
   // decrementQuantity,
 } from "../store/features/products";
 import { addToCart } from "../store/features/Cart";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function SingleProduct() {
   // get id from the url when page loads
   const { id } = useParams();
 
   // get products from the store
-  const products: product[] = useAppSelector(
+  const products: product[] | null = useAppSelector(
     (state) => state.productReducer.products
   );
 
@@ -40,7 +42,8 @@ export default function SingleProduct() {
   const dispatch = useAppDispatch();
   return (
     <div className=" h-[100vh] items-center flex w-[90%] m-auto pt-40 lg:w-[80%]">
-      <div className=" flex md:flex-row flex-col md:items-center justify-center">
+      <Header />
+      <div className=" flex md:flex-row flex-col md:items-center justify-center pb-20">
         <div className=" md:w-1/3 mr-5">
           {/* product image */}
           <img
@@ -113,6 +116,7 @@ export default function SingleProduct() {
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
