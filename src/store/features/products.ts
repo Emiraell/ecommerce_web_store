@@ -21,6 +21,7 @@ export type product = {
 export interface products {
   products: product[] | null;
   status: string;
+  filteredProducts: product[];
 }
 
 // get products using local storage
@@ -33,32 +34,26 @@ try {
   items = [] as product[];
 }
 
-// initialState
-const initialState = {
+// initialState/ product state
+const initialState: products = {
   products: (items as product[]) || [],
-  status: "" as string,
+  status: "",
+  filteredProducts: [],
 };
 export const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    // incrementQuantity: (state, action) => {
-    //   state.products.map((item) => {
-    //     if (item.id === action.payload.id && item.quantity !== item.stock) {
-    //       item.quantity++;
-    //       item.subTotal = item.subTotal + item.price;
-    //       console.log("incrm");
-    //     }
-    //   });
-    // },
-    // decrementQuantity: (state, action) => {
-    //   state.products.map((item) => {
-    //     if (item.id === action.payload.id && item.quantity < 1) {
-    //       item.quantity;
-    //       item.subTotal = item.subTotal - item.price;
-    //     }
-    //   });
-    // },
+    filterProduct: (state, action: PayloadAction<string>) => {
+      // filter product based on the action received
+      const filter = state.products?.filter(
+        (product) =>
+          product.category.toUpperCase() === action.payload.toUpperCase()
+      );
+
+      // set filtered product to returned array
+      state.filteredProducts = filter as product[];
+    },
   },
   extraReducers(builder) {
     builder
@@ -78,7 +73,7 @@ export const productSlice = createSlice({
       })
       .addCase(getProducts.rejected, (state) => {
         state.status = "error";
-        state.products = [...state.products];
+        state.products = [...(state.products as product[])];
       });
   },
 });
@@ -97,5 +92,5 @@ export const getProducts = createAsyncThunk("get/products", async () => {
   }));
   return updatedData;
 });
-// export const { incrementQuantity, decrementQuantity } = productSlice.actions;
+export const { filterProduct } = productSlice.actions;
 export default productSlice.reducer;

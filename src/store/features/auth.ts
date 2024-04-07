@@ -13,9 +13,9 @@ try {
   userAuth = userInfo && JSON.parse(userInfo);
 } catch (err) {}
 const initialState: auth = {
-  userName: (userAuth.userName as string) || "",
-  password: (userAuth.password as string) || "",
-  userIn: (userAuth.userIn as boolean) || false,
+  userName: "",
+  password: "",
+  userIn: false,
 };
 
 export const authSlice = createSlice({
