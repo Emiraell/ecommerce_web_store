@@ -12,7 +12,11 @@ let userAuth;
 try {
   userAuth = userInfo && JSON.parse(userInfo);
 } catch (err) {}
-const initialState: auth = { userName: "", password: "", userIn: false };
+const initialState: auth = {
+  userName: (userAuth.userName as string) || "",
+  password: (userAuth.password as string) || "",
+  userIn: (userAuth.userIn as boolean) || false,
+};
 
 export const authSlice = createSlice({
   name: "auth",
@@ -28,7 +32,7 @@ export const authSlice = createSlice({
       state.userName = "";
       state.password = "";
       state.userIn = false;
-      localStorage.setItem("user", JSON.stringify(state));
+      localStorage.removeItem("user");
     },
   },
 });

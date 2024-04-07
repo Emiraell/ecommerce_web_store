@@ -7,9 +7,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../store/Store";
+import { useAppDispatch, useAppSelector } from "../store/Store";
 import {} from "@material-tailwind/react";
+import { logout } from "../store/features/auth";
 
+interface IUser {
+  userName: string;
+  userIn: boolean;
+}
 export default function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   // open menu bar on small screen devices
@@ -18,8 +23,13 @@ export default function Navbar() {
   // total number of items in the cart
   const totalCart = useAppSelector((state) => state.cartReducer.totalItem);
 
-  // logged in user name
-  const name: string = useAppSelector((state) => state.userReducer.userName);
+  // logged in user info
+  const { userName: name, userIn }: IUser = useAppSelector(
+    (state) => state.userReducer
+  );
+
+  //  dispatcch
+  const dispatch = useAppDispatch();
 
   return (
     <nav
@@ -33,7 +43,7 @@ export default function Navbar() {
         )}
       </div>
       <p>
-        emirael{" "}
+        emirael
         <span className=" font-rochester text-red-400 text-xl md:text-2xl tracking-wider">
           Store
         </span>
@@ -56,7 +66,8 @@ export default function Navbar() {
         </ul>
       </div>
       <div className=" flex gap-4 items-center ">
-        <p>
+        {/* logout */}
+        <p onClick={() => dispatch(logout())}>
           {name} <FontAwesomeIcon icon={faUser} />
         </p>
         <div
