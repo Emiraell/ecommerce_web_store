@@ -43,11 +43,13 @@ export default function Navbar() {
         )}
       </div>
       <p>
-        emirael
-        <span className=" font-rochester text-red-400 text-xl md:text-2xl tracking-wider">
-          Store
-        </span>
-      </p>{" "}
+        <Link to="/">
+          emirael
+          <span className=" font-rochester text-red-400 text-xl md:text-2xl tracking-wider">
+            Store
+          </span>
+        </Link>
+      </p>
       {userIn && (
         <>
           <div className="md:static absolute mt-11  md:mt-0 left-0 right-0 bg-[#2d3900] px-7 md:px-0 ">

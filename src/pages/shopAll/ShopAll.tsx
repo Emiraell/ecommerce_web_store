@@ -50,7 +50,7 @@ export default function ShopAll() {
   }, []);
 
   return (
-    <div className="pt-44 w-[90%] m-auto text-lg  tracking-wider">
+    <div className="pt-32 md:pt-44 w-[90%] m-auto text-lg  tracking-wider">
       <Header />
       {/* display message */}
       {products && products.length < 1 ? (
