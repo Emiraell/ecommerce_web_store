@@ -27,7 +27,10 @@ function App() {
         <ToTop />
         {/* <Header /> */}
         <Routes>
-          <Route path="/" element={userIn ? <Home /> : <Login />} />
+          <Route
+            path="/ecommerce_web_store"
+            element={userIn ? <Home /> : <Login />}
+          />
           <Route
             path="/product/:id"
             element={userIn ? <SingleProduct /> : <Login />}
