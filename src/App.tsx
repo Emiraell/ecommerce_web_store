@@ -10,6 +10,7 @@ import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import ToTop from "./components/ToTop";
 import About from "./pages/About";
+import Error from "./pages/Error";
 
 function App() {
   // dispatch action
@@ -34,6 +35,7 @@ function App() {
           <Route path="/shop_all" element={userIn ? <ShopAll /> : <Login />} />
           <Route path="/cart" element={userIn ? <Cart /> : <Login />} />
           <Route path="/about" element={userIn ? <About /> : <Login />} />
+          <Route path="*" element={userIn ? <Error /> : <Login />} />
         </Routes>
       </Router>
     </div>
