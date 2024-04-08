@@ -23,7 +23,7 @@ function App() {
   }, []);
   return (
     <div className="font-roboto">
-      <Router>
+      <Router basename="/ecommerce_web_store">
         <ToTop />
         {/* <Header /> */}
         <Routes>

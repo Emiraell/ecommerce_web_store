@@ -10,7 +10,7 @@ export default function Error() {
         404... page not found
       </p>
       <br />
-      <Link to="/" className=" text-blue-600 italic">
+      <Link to="/ecommerce_web_store" className=" text-blue-600 italic">
         click to here to return to homepage
       </Link>
     </div>

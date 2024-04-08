@@ -45,7 +45,7 @@ export default function Navbar() {
         </div>
       )}
       <p>
-        <Link to="/">
+        <Link to="/ecommerce_web_store">
           emirael
           <span className=" font-rochester text-red-400 text-xl md:text-2xl tracking-wider">
             Store
@@ -61,7 +61,7 @@ export default function Navbar() {
               } flex md:flex-row md:items-center flex-col gap-6 w-[100vw] md:w-fit py-5`}
             >
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/ecommerce_web_store">Home</Link>
               </li>
               <li>
                 <Link to="/shop_all">Shop all</Link>
