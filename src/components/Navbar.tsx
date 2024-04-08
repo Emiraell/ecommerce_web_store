@@ -35,13 +35,15 @@ export default function Navbar() {
     <nav
       className={` flex justify-between px-5 md:px-7 py-5 text-lg md:text-2xl md:items-center bg-[#2d3900] text-slate-100`}
     >
-      <div className=" md:hidden" onClick={() => setMenuOpened(!menuOpened)}>
-        {!menuOpened ? (
-          <FontAwesomeIcon icon={faBars} />
-        ) : (
-          <FontAwesomeIcon icon={faX} />
-        )}
-      </div>
+      {userIn && (
+        <div className=" md:hidden" onClick={() => setMenuOpened(!menuOpened)}>
+          {!menuOpened ? (
+            <FontAwesomeIcon icon={faBars} />
+          ) : (
+            <FontAwesomeIcon icon={faX} />
+          )}
+        </div>
+      )}
       <p>
         <Link to="/">
           emirael

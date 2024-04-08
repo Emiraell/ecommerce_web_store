@@ -33,6 +33,10 @@ export const authSlice = createSlice({
       state.password = "";
       state.userIn = false;
       localStorage.removeItem("user");
+      localStorage.removeItem("products");
+      localStorage.removeItem("cart");
+      localStorage.removeItem("totalItem");
+      localStorage.removeItem("totalPrice");
     },
   },
 });

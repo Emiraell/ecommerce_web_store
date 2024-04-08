@@ -54,7 +54,7 @@ export default function ShopAll() {
       <Header />
       {/* display message */}
       {products && products.length < 1 ? (
-        <p>{message}</p>
+        <p className="italic text-red-500">{message}</p>
       ) : (
         // display items
         <div className="pb-32">

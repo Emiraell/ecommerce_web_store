@@ -20,7 +20,7 @@ export default function NavButtons() {
     <div className=" w-[80%] m-auto">
       <div className="">
         <p className="text-center text-gray-50 p-3 my-7 rounded text-lg md:text-xl bg-gray-900 w-full m-auto">
-          50% discount coming soon
+          Black sales.... coming soon
         </p>
 
         <div>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/Store";
-import { product, products } from "../../store/features/products";
+import { products } from "../../store/features/products";
 import SingleProduct from "./SingleProduct";
 import { useEffect, useState } from "react";
 
