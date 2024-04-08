@@ -43,7 +43,7 @@ try {
 const initialState: cartInfo = {
   cart: (cartItem as cartProduct[]) || [],
   totalItem: (totalCartItem as number) || 0,
-  totalPrice: 0,
+  totalPrice: (totalCartPrice as number) || 0,
 };
 export const cartSlice = createSlice({
   name: "cart",
