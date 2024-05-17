@@ -1,9 +1,10 @@
-import { faMinus, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../store/Store";
 import { addToCart } from "../../store/features/Cart";
 import { product } from "../../store/features/products";
+import { Rating } from "@mui/material";
 
 // received props interface
 interface Iproduct {
@@ -14,72 +15,52 @@ export default function Product({ product }: Iproduct) {
   // dispatch function
   const dispatch = useAppDispatch();
   return (
-    <div key={product.id}>
-      <div className=" shadow-lg">
+    <div className="mx-3 shadow-lg">
+      <div>
         <Link to={`/product/${product.id}`}>
           <div className="relative">
             <img
               src={product.images[0]}
               alt=""
               className="rounded-lg h-48 object-contain w-full"
-            />{" "}
+            />
             <p className=" absolute top-14 right-3 text-red-700 text-3xl font-bold uppercase -rotate-45">
               Sale%
             </p>
           </div>
-          <div className="text-center text-xl font-bold md:h-16 mt-4 ">
-            <span>{product.title}</span>{" "}
+        </Link>
+        <div className="bg-gray-100 py-4">
+          <div className="text-center text-xl font-bold md:h-16 pb-3 ">
+            <span>{product.title}</span>
             <FontAwesomeIcon icon={faMinus} className="px-2" />
             <span>{product.brand}</span>
           </div>
-        </Link>
-        <p className="text-center px-3 md:h-32 text-lg tracking-wider">
-          {product.description}
-        </p>
+          <p className="text-center px-3 md:h-32 h-28 md:text-lg tracking-wider">
+            {product.description}
+          </p>
 
-        <div className="flex justify-around pt-4">
-          <p className=" text-xl font-bold text-emerald-900 ">
-            ${product.price}
-          </p>{" "}
-          <div className=" text-orange-400">
-            {/* product rating */}
-            <p>{product.rating < 2 && <FontAwesomeIcon icon={faStar} />}</p>
-            <p>
-              {product.rating < 3 && (
-                <span>
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                </span>
-              )}
+          <div className="flex justify-around py-3">
+            <p className=" text-xl font-bold text-emerald-900 ">
+              ${product.price}
             </p>
-            <p>
-              {product.rating < 4 && (
-                <span>
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                </span>
-              )}
-            </p>
-            <p>
-              {product.rating < 5 && (
-                <span>
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                </span>
-              )}
-            </p>
+            <div className=" text-orange-400">
+              {/* product rating */}
+              <Rating
+                name="read-only"
+                readOnly
+                value={product.rating}
+                precision={0.1}
+              />
+            </div>
           </div>
+          <button
+            className=" w-full bg-yellow-500 p-3 rounded-full "
+            // add product to cart
+            onClick={() => dispatch(addToCart(product))}
+          >
+            Add to Cart
+          </button>
         </div>
-        <button
-          className=" w-full my-5 bg-yellow-500 p-3 rounded-full "
-          // add product to cart
-          onClick={() => dispatch(addToCart(product))}
-        >
-          Add to Cart
-        </button>
       </div>
     </div>
   );

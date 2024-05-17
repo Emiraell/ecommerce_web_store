@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/Store";
-import {} from "@material-tailwind/react";
+import { Tooltip } from "@mui/material";
 import { logout } from "../store/features/auth";
 
 interface IUser {
@@ -74,10 +74,12 @@ export default function Navbar() {
 
           <div className=" flex gap-4 items-center ">
             {/* logout */}
-            <p onClick={() => dispatch(logout())}>
-              {/* display only the first three letters of user */}
-              {name.substring(0, 3)} <FontAwesomeIcon icon={faUser} />
-            </p>
+            <Tooltip title={`logout ${name}`}>
+              <p onClick={() => dispatch(logout())}>
+                {/* display only the first three letters of user */}
+                {name.substring(0, 3)} <FontAwesomeIcon icon={faUser} />
+              </p>
+            </Tooltip>
             <div
               className=" w-fit"
               onClick={() => {

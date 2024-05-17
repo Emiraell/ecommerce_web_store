@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../store/Store";
-import Product from "./Product";
 import { product, products } from "../../store/features/products";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import SliderCarousel from "./Slider";
 
 export default function ShopAll() {
   //  get all products
@@ -62,66 +62,42 @@ export default function ShopAll() {
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
               Phones
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {phones?.map((phone) => (
-                <Product product={phone} key={phone.id} />
-              ))}
-            </div>
+            <SliderCarousel products={phones} />
           </>
 
           <div className="mt-16">
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
               Laptops
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {laptops?.map((laptop) => (
-                <Product product={laptop} key={laptop.id} />
-              ))}
-            </div>
+            <SliderCarousel products={laptops} />
           </div>
 
           <div className="mt-16">
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
               Home Decoration
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {homeDecorations?.map((decoration) => (
-                <Product product={decoration} key={decoration.id} />
-              ))}
-            </div>
+            <SliderCarousel products={homeDecorations} />
           </div>
 
           <div className="mt-16">
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
               Skincare
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {skincares?.map((skincare) => (
-                <Product product={skincare} key={skincare.id} />
-              ))}
-            </div>
+            <SliderCarousel products={skincares} />
           </div>
 
           <div className="mt-16">
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
               Fragrances
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {fragrances?.map((fragrance) => (
-                <Product product={fragrance} key={fragrance.id} />
-              ))}
-            </div>
+            <SliderCarousel products={fragrances} />
           </div>
 
           <div className="mt-16">
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
               Groceries
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {groceries?.map((grocery) => (
-                <Product product={grocery} key={grocery.id} />
-              ))}
-            </div>
+            <SliderCarousel products={groceries} />
           </div>
         </div>
       )}

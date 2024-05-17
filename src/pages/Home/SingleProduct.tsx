@@ -1,7 +1,6 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { product } from "../../store/features/products";
+import { Rating } from "@mui/material";
 
 // props interface
 interface IProps {
@@ -12,7 +11,7 @@ export default function SingleProduct({ product }: IProps) {
   return (
     <div
       key={product.id}
-      className=" shadow-lg rounded-lg text-lg tracking-wide relative"
+      className=" shadow-lg rounded-lg text-lg tracking-wide relative hover:opacity-85 bg-gray-200"
     >
       <Link to={`/product/${product.id}`}>
         <img
@@ -28,34 +27,12 @@ export default function SingleProduct({ product }: IProps) {
           <div className=" flex justify-around pt-6">
             <p className=" text-xl font-bold">${product.price}</p>
             <div className=" text-orange-500">
-              <p>{product.rating < 2 && <FontAwesomeIcon icon={faStar} />}</p>
-              <p>
-                {product.rating < 3 && (
-                  <span>
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                  </span>
-                )}
-              </p>
-              <p>
-                {product.rating < 4 && (
-                  <span>
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                  </span>
-                )}
-              </p>
-              <p>
-                {product.rating < 5 && (
-                  <span>
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                  </span>
-                )}
-              </p>
+              <Rating
+                precision={0.1}
+                readOnly
+                name="read-only"
+                value={product.rating}
+              />
             </div>
           </div>
         </div>

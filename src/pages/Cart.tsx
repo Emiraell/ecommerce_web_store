@@ -8,6 +8,7 @@ interface Icart {
   cart: cartProduct[];
   totalPrice: number;
 }
+
 export default function Cart() {
   //  get all products available in the cart
   const { cart, totalPrice }: Icart = useAppSelector(
@@ -47,12 +48,18 @@ export default function Cart() {
             // single product content
             <div
               key={product.id}
-              className=" grid grid-cols-5 shadow-md my-10 py-3 gap-x-10"
+              className=" grid grid-cols-5 shadow-md my-10 py-3 gap-x-10 bg-gray-200"
             >
               <div className=" col-span-2">
-                <img src={product.image} alt={`${product.title} photo`} />
+                <div className="mb-2 -mt-3">
+                  <img
+                    src={product.image}
+                    alt={`${product.title} photo`}
+                    className=" rounded-r-md"
+                  />
+                </div>
                 <div>
-                  <p className="text-center">{product.brand}</p>
+                  <p className="text-center font-bold">{product.brand}</p>
                   {/* <p>{product.description}</p> */}
                 </div>
               </div>
@@ -64,7 +71,7 @@ export default function Cart() {
 
                 {/* remove product from cart */}
                 <button
-                  className="w-full bg-red-500 rounded-full py-2"
+                  className="w-full bg-red-500 rounded-full py-2 -ml-5"
                   onClick={() => dispatch(removeItem(product))}
                 >
                   Remove item

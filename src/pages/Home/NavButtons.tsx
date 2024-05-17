@@ -1,6 +1,7 @@
 import { filterProduct } from "../../store/features/products";
 import { useAppDispatch } from "../../store/Store";
 import clothes from "../../assets/clothes.jpg";
+import { Button, ButtonGroup } from "@mui/material";
 export default function NavButtons() {
   // product navigation buttons
   const items: string[] = [
@@ -31,18 +32,29 @@ export default function NavButtons() {
           />
         </div>
       </div>
-      <div className=" grid gap-3 grid-cols-3 md:grid-cols-6 md:text-lg mt-5">
-        {/* display product based on filtered item */}
+      {/* <div className=" grid gap-3 grid-cols-3 md:grid-cols-6 md:text-lg mt-5"> */}
+      {/* display product based on filtered item */}
+      <ButtonGroup
+        sx={{
+          display: { xs: "grid", md: "flex" },
+          gap: 2,
+          gridTemplateColumns: "1fr 1fr 1fr",
+          mt: 5,
+        }}
+      >
         {items.map((item) => (
-          <button
-            className=" bg-slate-300 active:bg-green-300 text-gray-950 text-sm p-1 md:p-2 md:text-base pr-5"
+          <Button
+            disableElevation
+            color="success"
+            // className=" bg-slate-300 active:bg-green-300 text-gray-950 text-sm p-1 md:p-2 md:text-base pr-5"
             key={item}
             onClick={() => dispatch(filterProduct(item))}
           >
             {item}
-          </button>
+          </Button>
         ))}
-      </div>
+      </ButtonGroup>
+      {/* </div> */}
     </div>
   );
 }

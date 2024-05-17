@@ -21,6 +21,7 @@ export default function Login() {
   const [alert, setAlert] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
+
   return (
     <div className=" m-auto pt-48 md:w-fit tracking-wider md:text-lg w-full">
       <Header />
@@ -32,6 +33,25 @@ export default function Login() {
 
       {/* login form */}
       <form
+        onSubmit={(e) => {
+          e.preventDefault();
+
+          // conditions to meet before user is logged in
+          if (
+            userDetails.password &&
+            userDetails.userName !== "" &&
+            userDetails.password?.length > 5
+          ) {
+            setUserDetails({ ...userDetails, userIn: true });
+            dispatch(login(userDetails));
+          } else {
+            setUserDetails({ userName: "", password: "", userIn: false });
+            setAlert(true);
+            setTimeout(() => {
+              setAlert(false);
+            }, 3000);
+          }
+        }}
         action=""
         className="bg-blue-950 px-10 py-10 rounded-lg text-slate-200 mx-5 "
       >
@@ -79,26 +99,8 @@ export default function Login() {
 
         {/* submit */}
         <button
+          type="submit"
           className=" bg-green-700 w-full rounded-md hover:opacity-80 py-2 mt-3"
-          onClick={(e) => {
-            e.preventDefault();
-
-            // conditions to meet before user is logged in
-            if (
-              userDetails.password &&
-              userDetails.userName !== "" &&
-              userDetails.password?.length > 5
-            ) {
-              setUserDetails({ ...userDetails, userIn: true });
-              dispatch(login(userDetails));
-            } else {
-              setUserDetails({ userName: "", password: "", userIn: false });
-              setAlert(true);
-              setTimeout(() => {
-                setAlert(false);
-              }, 3000);
-            }
-          }}
         >
           submit
         </button>
