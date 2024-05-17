@@ -22,7 +22,7 @@ export default function Product({ product }: Iproduct) {
             <img
               src={product.images[0]}
               alt=""
-              className="rounded-lg h-48 object-contain w-full"
+              className="rounded-lg h-48 object-cover w-full"
             />
             <p className=" absolute top-14 right-3 text-red-700 text-3xl font-bold uppercase -rotate-45">
               Sale%
@@ -31,9 +31,11 @@ export default function Product({ product }: Iproduct) {
         </Link>
         <div className="bg-gray-100 py-4">
           <div className="text-center text-xl font-bold md:h-16 pb-3 ">
-            <span>{product.title}</span>
-            <FontAwesomeIcon icon={faMinus} className="px-2" />
-            <span>{product.brand}</span>
+            <Link to={`/product/${product.id}`}>
+              <span>{product.title}</span>
+              <FontAwesomeIcon icon={faMinus} className="px-2" />
+              <span>{product.brand}</span>
+            </Link>
           </div>
           <p className="text-center px-3 md:h-32 h-28 md:text-lg tracking-wider">
             {product.description}

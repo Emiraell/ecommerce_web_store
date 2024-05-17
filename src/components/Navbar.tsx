@@ -5,18 +5,19 @@ import {
   faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/Store";
 import { Tooltip } from "@mui/material";
 import { logout } from "../store/features/auth";
+import { AppContext } from "../App";
 
 interface IUser {
   userName: string;
   userIn: boolean;
 }
 export default function Navbar() {
-  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  // const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   // open menu bar on small screen devices
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
 
@@ -28,6 +29,7 @@ export default function Navbar() {
     (state) => state.userReducer
   );
 
+  const { cartOpen, setCartOpen } = useContext(AppContext);
   //  dispatcch
   const dispatch = useAppDispatch();
 
@@ -83,15 +85,13 @@ export default function Navbar() {
             <div
               className=" w-fit"
               onClick={() => {
-                setIsCartOpen(!isCartOpen);
+                setCartOpen(!cartOpen);
               }}
             >
-              <Link to="/cart">
-                <FontAwesomeIcon icon={faShoppingCart} />
-                <p className=" absolute top-0 md:top-4 right-3 md:right-5 text-red-500 text-2xl md:text-3xl">
-                  {totalCart !== 0 && totalCart}
-                </p>
-              </Link>
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <p className=" absolute top-0 md:top-4 right-3 md:right-5 text-red-500 text-2xl md:text-3xl">
+                {totalCart !== 0 && totalCart}
+              </p>
             </div>
           </div>
         </>
