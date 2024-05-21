@@ -83,7 +83,7 @@ export default function Navbar() {
               </p>
             </Tooltip>
             <div
-              className=" w-fit"
+              className=" w-fit cursor-pointer"
               onClick={() => {
                 setCartOpen(!cartOpen);
               }}
