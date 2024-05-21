@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="font-roboto">
       <AppContext.Provider value={{ cartOpen, setCartOpen }}>
-        <Router basename="/ecommerce_web_store">
+        <Router>
           <ToTop />
           {/* <Header /> */}
           <Routes>

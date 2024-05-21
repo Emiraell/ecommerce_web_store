@@ -25,7 +25,7 @@ export interface products {
 }
 
 // get products using local storage
-const allProducts = localStorage.getItem("products");
+const allProducts = sessionStorage.getItem("products");
 
 let items;
 try {
@@ -64,8 +64,8 @@ export const productSlice = createSlice({
           state.products = action.payload;
           state.status = "success";
 
-          // store item in localStorage
-          localStorage.setItem("products", JSON.stringify(state.products));
+          // store item in sessionStorage
+          sessionStorage.setItem("products", JSON.stringify(state.products));
         }
       )
       .addCase(getProducts.pending, (state) => {

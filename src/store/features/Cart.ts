@@ -22,9 +22,9 @@ interface cartInfo {
 }
 
 // get product from local storage
-const allCartItems = localStorage.getItem("cart");
-const itemsTotal = localStorage.getItem("totalItem");
-const itemsTotalPrice = localStorage.getItem("totalPrice");
+const allCartItems = sessionStorage.getItem("cart");
+const itemsTotal = sessionStorage.getItem("totalItem");
+const itemsTotalPrice = sessionStorage.getItem("totalPrice");
 
 // check if items exist in local storage
 let cartItem;
@@ -74,17 +74,17 @@ export const cartSlice = createSlice({
         });
       }
       // save cart products in local storage
-      localStorage.setItem("cart", JSON.stringify(state.cart));
+      sessionStorage.setItem("cart", JSON.stringify(state.cart));
 
       // increment the total number of item in the cart
       state.totalItem += action.payload.quantity;
 
       // save total item in local storage
-      localStorage.setItem("totalItem", JSON.stringify(state.totalItem));
+      sessionStorage.setItem("totalItem", JSON.stringify(state.totalItem));
 
       // total price
       state.totalPrice += product.subTotal;
-      localStorage.setItem("totalPrice", JSON.stringify(state.totalPrice));
+      sessionStorage.setItem("totalPrice", JSON.stringify(state.totalPrice));
     },
     removeItem: (state, action): any => {
       let product = action.payload;
@@ -105,17 +105,17 @@ export const cartSlice = createSlice({
       }
 
       // save cart products in local storage
-      localStorage.setItem("cart", JSON.stringify(state.cart));
+      sessionStorage.setItem("cart", JSON.stringify(state.cart));
 
       // decrement the total number of item in the cart
       state.totalItem--;
 
       // save total item in local storage
-      localStorage.setItem("totalItem", JSON.stringify(state.totalItem));
+      sessionStorage.setItem("totalItem", JSON.stringify(state.totalItem));
 
       // total price
       state.totalPrice -= action.payload.price;
-      localStorage.setItem("totalPrice", JSON.stringify(state.totalPrice));
+      sessionStorage.setItem("totalPrice", JSON.stringify(state.totalPrice));
     },
   },
 });

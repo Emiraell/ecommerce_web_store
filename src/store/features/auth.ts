@@ -6,7 +6,7 @@ export interface auth {
   userIn: boolean;
 }
 
-const userInfo = localStorage.getItem("user");
+const userInfo = sessionStorage.getItem("user");
 
 let userAuth;
 try {
@@ -26,17 +26,17 @@ export const authSlice = createSlice({
       state.userName = action.payload.userName;
       state.password = action.payload.password;
       state.userIn = true;
-      localStorage.setItem("user", JSON.stringify(state));
+      sessionStorage.setItem("user", JSON.stringify(state));
     },
     logout: (state) => {
       state.userName = "";
       state.password = "";
       state.userIn = false;
-      localStorage.removeItem("user");
-      localStorage.removeItem("products");
-      localStorage.removeItem("cart");
-      localStorage.removeItem("totalItem");
-      localStorage.removeItem("totalPrice");
+      sessionStorage.removeItem("user");
+      sessionStorage.removeItem("products");
+      sessionStorage.removeItem("cart");
+      sessionStorage.removeItem("totalItem");
+      sessionStorage.removeItem("totalPrice");
     },
   },
 });
