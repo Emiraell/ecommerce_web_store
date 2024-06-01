@@ -38,7 +38,7 @@ export default function Product({ product }: Iproduct) {
             </Link>
           </div>
           <p className="text-center px-3 md:h-32 h-28 md:text-lg tracking-wider">
-            {product.description}
+            {product.description.substring(0, 110)}....
           </p>
 
           <div className="flex justify-around py-3">

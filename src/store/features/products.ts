@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 // single product type/interface
 export type product = {
   id: number;
+  availabilityStatus: string;
   title: string;
   description: string;
   price: number;
@@ -10,11 +11,20 @@ export type product = {
   rating: number;
   stock: number;
   brand: string;
+  returnPolicy: string;
   category: string;
   thumbnail: string;
   images: string[];
   quantity: number;
   subTotal: number;
+  shippingInformation: string;
+  warrantyInformation: string;
+  reviews: {
+    rating: number;
+    comment: string;
+    reviewerName: string;
+    reviewerEmail: string;
+  }[];
 };
 
 // initailState type/interface

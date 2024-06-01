@@ -15,11 +15,7 @@ export default function ShopAll() {
   const [funitures, setFunitures] = useState<product[] | null>(null);
   const [beauty, setBeauty] = useState<product[] | null>(null);
   const [fragrances, setFragrances] = useState<product[] | null>(null);
-  const [skincares, setSkincares] = useState<product[] | null>(null);
   const [groceries, setGroceries] = useState<product[] | null>(null);
-  const [homeDecorations, setHomeDecorations] = useState<product[] | null>(
-    null
-  );
 
   //  assign products to each category
   const assignProducts = () => {
@@ -33,12 +29,7 @@ export default function ShopAll() {
       product.category === "groceries" &&
         setGroceries((prev) => (prev ? [...prev, product] : [product]));
     });
-    console.log(products);
   };
-
-  useEffect(() => {
-    assignProducts();
-  }, []);
 
   // message to display if products ain't displaying
   const [message, setMessage] = useState<string>("");

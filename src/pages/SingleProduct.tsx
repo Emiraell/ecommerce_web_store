@@ -7,6 +7,7 @@ import { product } from "../store/features/products";
 import { addToCart } from "../store/features/Cart";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { Avatar, Icon, Rating } from "@mui/material";
 
 export default function SingleProduct() {
   // get id from the url when page loads
@@ -59,9 +60,36 @@ export default function SingleProduct() {
           </p>
           {/* more product info */}
           <div className=" text-gray-600">
-            <p>Availability: In stock</p>
+            <p>Availability: {product?.stock}</p>
             <p>Category: {product?.category}</p>
             <p>Brand: {product?.brand}</p>
+            <p>Return Policy: {product?.returnPolicy}</p>
+            <p>Warranty: {product?.warrantyInformation}</p>
+            <p>Shipping Information: {product?.shippingInformation}</p>
+            <div>
+              <p className=" text-gray-950 py-3">Reviews</p>
+              <div className="h-28 overflow-y-scroll p-4">
+                {product?.reviews.map((review, i) => (
+                  <div key={i} className=" py-3 border-b-2">
+                    <div className="flex items-start gap-4 pb-3">
+                      <Avatar children={review.reviewerName[0]} />
+                      <div>
+                        <div className="flex">
+                          <p className="pr-5">{review.reviewerName}</p>
+                          <Rating
+                            precision={0.1}
+                            readOnly
+                            value={review.rating}
+                          />
+                        </div>
+                        <p className="text-sm">{review.reviewerEmail}</p>
+                      </div>
+                    </div>
+                    <p>{review.comment}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
           {/* product price */}
           <p className="text-red-700 font-bold text-2xl py-6">

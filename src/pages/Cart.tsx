@@ -110,9 +110,9 @@ export default function Cart() {
             </Box>
           )}
           {cart.length !== 0 && (
-            <div className="fixed bottom-0 right-0 bg-white p-5">
+            <div className=" bg-white p-5 float-end">
               <p className=" font-bold text-lg">
-                Total price:
+                Total price:{"  "}
                 <span className="text-orange-500">
                   ${totalPrice.toFixed(2)}
                 </span>
