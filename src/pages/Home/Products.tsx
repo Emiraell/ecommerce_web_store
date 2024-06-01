@@ -30,11 +30,13 @@ export default function Products() {
           {/* display product based on if they're filtered or not */}
           {filteredProducts.length !== 0
             ? filteredProducts.map((product) => (
-                <SingleProduct product={product} />
+                <SingleProduct product={product} key={product.id} />
               ))
             : products
                 ?.slice(0, 10)
-                .map((product) => <SingleProduct product={product} />)}
+                .map((product) => (
+                  <SingleProduct product={product} key={product.id} />
+                ))}
         </div>
       )}
 

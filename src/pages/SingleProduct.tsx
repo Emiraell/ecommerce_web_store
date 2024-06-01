@@ -1,20 +1,16 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Params, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/Store";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import {
-  product,
-  // incrementQuantity,
-  // decrementQuantity,
-} from "../store/features/products";
+import { product } from "../store/features/products";
 import { addToCart } from "../store/features/Cart";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function SingleProduct() {
   // get id from the url when page loads
-  const { id } = useParams();
+  const { id }: Readonly<Params<string>> | any = useParams();
 
   // get products from the store
   const products: product[] | null = useAppSelector(
@@ -24,15 +20,12 @@ export default function SingleProduct() {
   // single product
   const [product, setProduct] = useState<product>();
 
-  // navigate
-  const navigate = useNavigate();
-
   const [amount, setAmount] = useState<number>(1);
   const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
     // set product if the id matches the product id
-    products?.map((product: any) => {
+    products?.map((product: product) => {
       if (product.id == id) {
         setProduct(product);
         setTotal(product.subTotal);
@@ -111,9 +104,6 @@ export default function SingleProduct() {
                 );
               setAmount(1);
               product && setTotal(product?.price);
-              setTimeout(() => {
-                navigate("/cart");
-              }, 1000);
             }}
             className="my-5 bg-emerald-800 w-full py-3 rounded-full text-gray-100
 					hover:text-emerald-800 hover:bg-transparent hover:border-2 border-emerald-800 cursor-pointer"

@@ -22,9 +22,9 @@ export default function SingleProduct({ product }: IProps) {
         <p className=" absolute top-14 right-3 text-red-700 text-3xl font-bold uppercase -rotate-45">
           Sale%
         </p>
-        <div className="p-5">
+        <div>
           <h3 className=" text-center font-semibold py-3">{product.title}</h3>
-          <div className=" flex justify-around pt-6">
+          <div className=" flex justify-around pt-2">
             <p className=" text-xl font-bold">${product.price}</p>
             <div className=" text-orange-500">
               <Rating

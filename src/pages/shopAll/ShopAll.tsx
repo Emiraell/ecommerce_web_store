@@ -12,8 +12,8 @@ export default function ShopAll() {
   );
 
   // products for each category
-  const [laptops, setLaptops] = useState<product[] | null>(null);
-  const [phones, setPhones] = useState<product[] | null>(null);
+  const [funitures, setFunitures] = useState<product[] | null>(null);
+  const [beauty, setBeauty] = useState<product[] | null>(null);
   const [fragrances, setFragrances] = useState<product[] | null>(null);
   const [skincares, setSkincares] = useState<product[] | null>(null);
   const [groceries, setGroceries] = useState<product[] | null>(null);
@@ -23,21 +23,22 @@ export default function ShopAll() {
 
   //  assign products to each category
   const assignProducts = () => {
-    products?.map((product: any) => {
-      product.category === "smartphones" &&
-        setPhones((prev) => (prev ? [...prev, product] : [product]));
-      product.category === "laptops" &&
-        setLaptops((prev) => (prev ? [...prev, product] : [product]));
+    products?.map((product: product) => {
+      product.category === "beauty" &&
+        setBeauty((prev) => (prev ? [...prev, product] : [product]));
+      product.category === "furniture" &&
+        setFunitures((prev) => (prev ? [...prev, product] : [product]));
       product.category === "fragrances" &&
         setFragrances((prev) => (prev ? [...prev, product] : [product]));
-      product.category === "skincare" &&
-        setSkincares((prev) => (prev ? [...prev, product] : [product]));
-      product.category === "home-decoration" &&
-        setHomeDecorations((prev) => (prev ? [...prev, product] : [product]));
       product.category === "groceries" &&
         setGroceries((prev) => (prev ? [...prev, product] : [product]));
     });
+    console.log(products);
   };
+
+  useEffect(() => {
+    assignProducts();
+  }, []);
 
   // message to display if products ain't displaying
   const [message, setMessage] = useState<string>("");
@@ -60,30 +61,16 @@ export default function ShopAll() {
         <div className="pb-32">
           <>
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
-              Phones
+              Beauty
             </p>
-            <SliderCarousel products={phones} />
+            <SliderCarousel products={beauty} />
           </>
 
           <div className="mt-16">
             <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
-              Laptops
+              Funitures
             </p>
-            <SliderCarousel products={laptops} />
-          </div>
-
-          <div className="mt-16">
-            <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
-              Home Decoration
-            </p>
-            <SliderCarousel products={homeDecorations} />
-          </div>
-
-          <div className="mt-16">
-            <p className=" border-b border-green-500 mb-5 text-yellow-500 font-bolds text-xl py-2">
-              Skincare
-            </p>
-            <SliderCarousel products={skincares} />
+            <SliderCarousel products={funitures} />
           </div>
 
           <div className="mt-16">

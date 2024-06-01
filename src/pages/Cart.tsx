@@ -1,17 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import { cartProduct, removeItem } from "../store/features/Cart";
+import { removeItem } from "../store/features/Cart";
 import { useAppDispatch, useAppSelector } from "../store/Store";
 import { AppContext } from "../App";
-import { Box, Modal } from "@mui/material";
-
-interface Icart {
-  cart: cartProduct[];
-  totalPrice: number;
-}
+import { Box, IconButton, Modal } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function Cart() {
   //  get all products available in the cart
-  const { cart, totalPrice }: Icart = useAppSelector(
+  const { cart, totalPrice, totalItem } = useAppSelector(
     (state) => state.cartReducer
   );
 
@@ -40,7 +36,9 @@ export default function Cart() {
           left: "50%",
           transform: "translate(-50%, -20%)",
           border: "none",
+          borderRadius: 1,
           width: { xs: 350, md: 900 },
+          bgcolor: "#ede4e4",
         }}
       >
         <Box sx={{ bgcolor: "#ede4e4" }}>
@@ -51,11 +49,14 @@ export default function Cart() {
             </p>
 
             {/* cart total price */}
-            {totalPrice !== 0 && (
+            {/* {totalPrice !== 0 && (
               <p className=" font-bold text-lg">
                 Total: <span className="text-orange-500">${totalPrice}</span>
               </p>
-            )}
+            )} */}
+            <IconButton onClick={() => setCartOpen(false)}>
+              <CloseIcon />
+            </IconButton>
           </div>
           {cart.length === 0 ? (
             <p className="text-center text-gray-500 italic text-lg px-5 py-10">
@@ -65,7 +66,7 @@ export default function Cart() {
           ) : (
             <Box
               sx={{
-                display: { md: "grid" },
+                // display: { md: "grid" },
                 gap: 3,
                 px: 3,
                 gridTemplateColumns: "1fr 1fr",
@@ -73,8 +74,11 @@ export default function Cart() {
             >
               {cart?.map((product) => (
                 // single product content
-                <Box className=" flex shadow-lg py-3 gap-3 justify-center items-center">
-                  <div className="w-20">
+                <Box
+                  className=" flex shadow-lg py-3 gap-3 justify-center items-center w-full m"
+                  key={product.id}
+                >
+                  <div className="w-20 md:w-[20%]">
                     <div className="mb-2">
                       <img
                         src={product.image}
@@ -104,6 +108,20 @@ export default function Cart() {
                 </Box>
               ))}
             </Box>
+          )}
+          {cart.length !== 0 && (
+            <div className="fixed bottom-0 right-0 bg-white p-5">
+              <p className=" font-bold text-lg">
+                Total price:
+                <span className="text-orange-500">
+                  ${totalPrice.toFixed(2)}
+                </span>
+              </p>
+              <p className=" font-bold text-lg">
+                Total Item:
+                <span className="text-orange-500"> {totalItem}</span>
+              </p>
+            </div>
           )}
         </Box>
       </Modal>
