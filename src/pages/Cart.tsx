@@ -48,12 +48,6 @@ export default function Cart() {
               shopping bag
             </p>
 
-            {/* cart total price */}
-            {/* {totalPrice !== 0 && (
-              <p className=" font-bold text-lg">
-                Total: <span className="text-orange-500">${totalPrice}</span>
-              </p>
-            )} */}
             <IconButton onClick={() => setCartOpen(false)}>
               <CloseIcon />
             </IconButton>
