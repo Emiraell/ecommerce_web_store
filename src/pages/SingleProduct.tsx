@@ -7,7 +7,7 @@ import { product } from "../store/features/products";
 import { addToCart } from "../store/features/Cart";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Avatar, Icon, Rating } from "@mui/material";
+import { Avatar, Rating } from "@mui/material";
 
 export default function SingleProduct() {
   // get id from the url when page loads
