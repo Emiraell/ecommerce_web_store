@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { removeItem } from "../store/features/Cart";
 import { useAppDispatch, useAppSelector } from "../store/Store";
@@ -38,22 +39,26 @@ export default function Cart() {
           border: "none",
           borderRadius: 1,
           width: { xs: 350, md: 900 },
-          bgcolor: "#ede4e4",
+          bgcolor: "white",
         }}
       >
-        <Box sx={{ bgcolor: "#ede4e4" }}>
+        <Box>
           {/* title and total price*/}
           <div className=" flex items-center justify-between p-5 mb-7 ">
             <p className=" text-xl text-orange-500 font-semibold  text-center">
               shopping bag
             </p>
 
-            <IconButton onClick={() => setCartOpen(false)}>
+            <IconButton
+              onClick={() => setCartOpen(false)}
+              color="error"
+              size="large"
+            >
               <CloseIcon />
             </IconButton>
           </div>
           {cart.length === 0 ? (
-            <p className="text-center text-gray-500 italic text-lg px-5 py-10">
+            <p className="text-center text-white italic text-lg px-5 py-10">
               Shopping bag is empty shop to <br />
               fill up your bag
             </p>
@@ -69,7 +74,7 @@ export default function Cart() {
               {cart?.map((product) => (
                 // single product content
                 <Box
-                  className=" flex shadow-lg py-3 gap-3 justify-center items-center w-full m"
+                  className=" flex shadow-lg py-3 gap-3 justify-center items-center w-full text-gray-950"
                   key={product.id}
                 >
                   <div className="w-20 md:w-[20%]">

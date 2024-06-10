@@ -11,7 +11,9 @@ const userInfo = sessionStorage.getItem("user");
 let userAuth;
 try {
   userAuth = userInfo && JSON.parse(userInfo);
-} catch (err) {}
+} catch (err) {
+  console.log(err);
+}
 const initialState: auth = userAuth || {
   userName: "",
   password: "",

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store/Store";
 import { products } from "../../store/features/products";

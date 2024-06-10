@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Params, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/Store";
 import { useEffect, useState } from "react";

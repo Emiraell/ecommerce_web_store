@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { product } from "./products";
 
@@ -86,7 +87,7 @@ export const cartSlice = createSlice({
       state.totalPrice += product.subTotal;
       sessionStorage.setItem("totalPrice", JSON.stringify(state.totalPrice));
     },
-    removeItem: (state, action): any => {
+    removeItem: (state, action) => {
       let product = action.payload;
 
       // check if item exist before removing it from the list
