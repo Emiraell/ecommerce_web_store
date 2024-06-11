@@ -30,19 +30,20 @@ export default function Cart() {
         onClose={() => setCartOpen(false)}
         aria-labelledby="alert-modal-title"
         aria-describedby="alert-modal-description"
-        sx={{
-          overflow: "scroll",
-          position: "absolute",
-          top: "30%",
-          left: "50%",
-          transform: "translate(-50%, -20%)",
-          border: "none",
-          borderRadius: 1,
-          width: { xs: 350, md: 900 },
-          bgcolor: "white",
-        }}
       >
-        <Box>
+        <Box
+          sx={{
+            overflow: "scroll",
+            position: "absolute",
+            top: "30%",
+            left: "50%",
+            transform: "translate(-50%, -20%)",
+            border: "none",
+            borderRadius: 1,
+            width: { xs: 350, md: 900 },
+            backgroundColor: "white",
+          }}
+        >
           {/* title and total price*/}
           <div className=" flex items-center justify-between p-5 mb-7 ">
             <p className=" text-xl text-orange-500 font-semibold  text-center">
@@ -58,7 +59,7 @@ export default function Cart() {
             </IconButton>
           </div>
           {cart.length === 0 ? (
-            <p className="text-center text-white italic text-lg px-5 py-10">
+            <p className="text-center italic text-lg px-5 py-10">
               Shopping bag is empty shop to <br />
               fill up your bag
             </p>
@@ -109,7 +110,7 @@ export default function Cart() {
             </Box>
           )}
           {cart.length !== 0 && (
-            <div className=" bg-white p-5 float-end">
+            <div className="  p-5 border-none absolute  right-0">
               <p className=" font-bold text-lg">
                 Total price:{"  "}
                 <span className="text-orange-500">
